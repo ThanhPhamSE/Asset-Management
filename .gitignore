@@ -1,0 +1,49 @@
+## ASP.NET Core .gitignore ##
+
+# Thư mục build và các file tạm thời
+bin/
+obj/
+.vscode/
+*.user
+*.suo
+*.cache
+*.csproj.user
+*.sln.docstates
+*.ncrunchproject
+*.ncrunchsolution
+*.vspx
+*.vsconfig
+.vs/
+
+# Thư mục publish (nếu có)
+publish/
+wwwroot/generated/
+
+# Thư mục chứa logs, lock, temp
+logs/
+*.log
+!log/
+temp/
+*.pid
+*.seed
+*.swp
+
+# Các file dữ liệu nhạy cảm
+# appsettings*.json
+# secrets.json
+
+# Các file liên quan đến dependency
+node_modules/
+bower_components/
+lib/
+
+# Thư viện của NuGet
+packages/
+*.nupkg
+*.snupkg
+project.lock.json
+global.json
+
+# Các file hệ thống của macOS, Windows
+.DS_Store
+Thumbs.db
