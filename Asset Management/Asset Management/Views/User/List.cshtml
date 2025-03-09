@@ -1,0 +1,538 @@
+﻿@using Asset_Management.ViewModels;
+@model List<Asset_Management.ViewModels.UserViewModel>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+
+<head>
+  <title>User List</title>
+  <!-- [Meta] -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
+  <meta name="keywords" content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
+  <meta name="author" content="CodedThemes">
+
+  <!-- [Favicon] icon -->
+<link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Google Font] Family -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+<!-- [Tabler Icons] https://tablericons.com -->
+<link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css" >
+<!-- [Feather Icons] https://feathericons.com -->
+<link rel="stylesheet" href="../assets/fonts/feather.css" >
+<!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+<link rel="stylesheet" href="../assets/fonts/fontawesome.css" >
+<!-- [Material Icons] https://fonts.google.com/icons -->
+<link rel="stylesheet" href="../assets/fonts/material.css" >
+<!-- [Template CSS Files] -->
+<link rel="stylesheet" href="../assets/css/style.css" id="main-style-link" >
+<link rel="stylesheet" href="../assets/css/style-preset.css" >
+
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body>
+    <partial name="_NavbarPartial" />
+  <!-- [ Main Content ] start -->
+  <div class="pc-container">
+    <div class="pc-content">
+      <!-- [ breadcrumb ] start -->
+      <div class="page-header">
+        <div class="page-block">
+          <div class="row align-items-center">
+            <div class="col-md-12">
+              <ul class="breadcrumb">
+                <li class="breadcrumb-item"><a href="../dashboard/index.html">Home</a></li>
+                <li class="breadcrumb-item"><a href="javascript: void(0)">Profile</a></li>
+                <li class="breadcrumb-item" aria-current="page">User List</li>
+              </ul>
+            </div>
+            <div class="col-md-12">
+              <div class="page-header-title">
+                <h2 class="mb-0">User List</h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- [ breadcrumb ] end -->
+
+      <!-- [ Main Content ] start -->
+      <div class="row">
+        <!-- [ sample-page ] start -->
+        <div class="col-sm-12">
+          <div class="card table-card">
+            <div class="card-body">
+              @* <div class="text-end p-4 pb-0">
+                <a href="#" class="btn btn-primary d-inline-flex align-item-center" data-bs-toggle="modal" data-bs-target="#user-edit_add-modal">
+                  <i class="ti ti-plus f-18"></i> Add User
+                </a>
+              </div> *@
+            <div class="text-end p-4 pb-0">
+                <a href="#" class="btn btn-primary d-inline-flex align-items-center" data-bs-toggle="modal" data-bs-target="#user-add-modal">
+                    <i class="ti ti-plus f-18 me-2"></i> Add User
+                </a>
+            </div>
+
+              <div class="table-responsive">
+                <table class="table table-hover" id="pc-dt-simple">
+                  <thead>
+                    <tr>
+                      <th></th>
+                      <th>#</th>
+                      <th>User Name</th>
+                      <th>FullName</th>
+                      <th>Email</th>
+                      <th>Role</th>
+                      <th>Status</th>
+                      <th class="text-center">Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    @foreach (var user in Model){
+                        <tr>
+                            <td>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox">
+                                </div>
+                            </td>
+                            <td>@user.Id</td>
+                            <td>
+                                <div class="row">
+                                    <div class="col-auto pe-0">
+                                        <img src="../assets/images/user/avatar-1.jpg" alt="user-image"
+                                                class="wid-40 rounded-circle">
+                                    </div>
+                                    <div class="col">
+                                        <h5 class="mb-0">@user.UserName</h5>
+                                        <p class="text-muted f-12 mb-0">@user.Email</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.Role</td>
+                            @* @if (user.IsActive)
+                            {
+                                <a asp-action="ToggleStatus" asp-route-id="@user.Id"><td><span class="badge bg-light-success rounded-pill f-12">Active</span></td></a>
+                            }
+                            else
+                            {
+                                <a asp-action="ToggleStatus" asp-route-id="@user.Id"><td><span class="badge bg-light-success rounded-pill f-12">InActive</span></td></a>
+                            } *@
+                            <td>
+                                <a asp-action="ToggleStatus" asp-route-id="@user.Id" class="btn">
+                                    <span class="badge @(user.IsActive ? "bg-light-success" : "bg-light-danger") rounded-pill f-12">
+                                        @(user.IsActive ? "Active" : "Inactive")
+                                    </span>
+                                </a>
+                            </td>
+
+                            <td class="text-center">
+                                <ul class="list-inline me-auto mb-0">
+                                    <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
+                                        <a href="#" class="avtar avtar-xs btn-link-secondary" data-bs-toggle="modal"
+                                            data-bs-target="#user-modal">
+                                            <i class="ti ti-eye f-18"></i>
+                                        </a>
+                                    </li>
+                                    <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
+                                        <a href="#" class="avtar avtar-xs btn-link-primary edit-user-btn"
+                                            data-bs-toggle="modal"
+                                            data-bs-target="#user-edit_add-modal"
+                                            data-id="@user.Id"
+                                            data-username="@user.UserName"
+                                            data-fullname="@user.FullName"
+                                            data-email="@user.Email"
+                                            data-role="@(user.Role ?? "")">
+                                            <i class="ti ti-edit-circle f-18"></i>
+                                        </a>
+                                    </li>
+
+
+                                    <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
+                                        <a asp-action="Delete" asp-controller="User" asp-route-userId="@user.Id"
+                                            class="avtar avtar-xs btn-link-danger"
+                                            onclick="return confirm('Are you sure you want to delete this user?');">
+                                            <i class="ti ti-trash f-18"></i>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </td>
+                        </tr>
+                    }
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- [ sample-page ] end -->
+      </div>
+      <!-- [ Main Content ] end -->
+    </div>
+  </div>
+  @* <div class="modal fade" id="user-modal" data-bs-keyboard="false" tabindex="-1"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header border-0 pb-0">
+          <h5 class="mb-0">Customer Details</h5>
+          <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+            <i class="ti ti-x f-20"></i>
+          </a>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-lg-4">
+              <div class="card">
+                <div class="card-body position-relative">
+                  <div class="position-absolute end-0 top-0 p-3">
+                    <span class="badge bg-primary">Relationship</span>
+                  </div>
+                  <div class="text-center mt-3">
+                    <div class="chat-avtar d-inline-flex mx-auto">
+                      <img class="rounded-circle img-fluid wid-60" src="../assets/images/user/avatar-5.jpg"
+                        alt="User image">
+                    </div>
+                    <h5 class="mb-0">Aaron Poole</h5>
+                    <p class="text-muted text-sm">Manufacturing Director</p>
+                    <hr class="my-3">
+                    <div class="row g-3">
+                      <div class="col-4">
+                        <h5 class="mb-0">45</h5>
+                        <small class="text-muted">Age</small>
+                      </div>
+                      <div class="col-4 border border-top-0 border-bottom-0">
+                        <h5 class="mb-0">86%</h5>
+                        <small class="text-muted">Progress</small>
+                      </div>
+                      <div class="col-4">
+                        <h5 class="mb-0">7634</h5>
+                        <small class="text-muted">Visits</small>
+                      </div>
+                    </div>
+                    <hr class="my-3">
+                    <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                      <i class="ti ti-mail"></i>
+                      <p class="mb-0">bo@gmail.com</p>
+                    </div>
+                    <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                      <i class="ti ti-phone"></i>
+                      <p class="mb-0">+1 (247) 849-6968</p>
+                    </div>
+                    <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                      <i class="ti ti-map-pin"></i>
+                      <p class="mb-0">Lesotho</p>
+                    </div>
+                    <div class="d-inline-flex align-items-center justify-content-between w-100">
+                      <i class="ti ti-link"></i>
+                      <a href="#" class="link-primary">
+                        <p class="mb-0">https://anshan.dh.url</p>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8">
+              <div class="card">
+                <div class="card-header">
+                  <h5>Personal Details</h5>
+                </div>
+                <div class="card-body">
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item px-0 pt-0">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p class="mb-1 text-muted">Full Name</p>
+                          <h6 class="mb-0">Aaron Poole</h6>
+                        </div>
+                        <div class="col-md-6">
+                          <p class="mb-1 text-muted">Father Name</p>
+                          <h6 class="mb-0">Mr. Ralph Sabatini</h6>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-group-item px-0">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p class="mb-1 text-muted">Country</p>
+                          <h6 class="mb-0">Lesotho</h6>
+                        </div>
+                        <div class="col-md-6">
+                          <p class="mb-1 text-muted">Zip Code</p>
+                          <h6 class="mb-0">247 849</h6>
+                        </div>
+                      </div>
+                    </li>
+                    <li class="list-group-item px-0 pb-0">
+                      <p class="mb-1 text-muted">Address</p>
+                      <h6 class="mb-0">647 Punam Center, Ulabifgu, Myanmar (Burma) - 41487</h6>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="card">
+                <div class="card-header">
+                  <h5>About me</h5>
+                </div>
+                <div class="card-body">
+                  <p class="mb-0">Hello, I’m Aaron Poole Manufacturing Director based in international company, Void
+                    jiidki me na fep juih ced gihhiwi launke cu mig tujum peodpo.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div> *@
+  <div class="modal fade" id="user-edit_add-modal" data-bs-keyboard="false" tabindex="-1"
+   aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <form asp-action="EditUser" asp-controller="User" method="post">
+                    <div class="modal-header">
+                        <h5 class="mb-0">Edit User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-3 text-center mb-3">
+                                <div class="user-upload wid-75">
+                                    <img src="../assets/images/user/avatar-1.jpg" alt="img" class="img-fluid">
+                                    <label for="uplfile" class="img-avtar-upload">
+                                        <i class="ti ti-camera f-24 mb-1"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <input type="hidden" name="Id" />
+
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="UserName" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" name="FullName" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input readonly type="email" name="Email" class="form-control" required>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="form-label">Role</label>
+                                    <select name="RoleId" class="form-select" required>
+                                        <option value="">Select Role</option>
+                                        @if (ViewBag.Roles != null)
+                                        {
+                                            @foreach (var role in ViewBag.Roles)
+                                            {
+                                                <option value="@role.Id">@role.Name</option>
+                                            }
+                                        }
+                                    </select>
+                                </div>
+
+
+                                @* <div class="form-group">
+                                <label class="form-label">Status</label>
+                                <select name="IsActive" class="form-select" required>
+                                <option value="true">Active</option>
+                                <option value="false">Inactive</option>
+                                </select>
+                                <select name="IsActiveString" class="form-select" required>
+                                <option value="true">Active</option>
+                                <option value="false">Inactive</option>
+                                </select>
+                                </div> *@
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+    </div>
+  </div>
+    <!-- Modal Add User -->
+    <div class="modal fade" id="user-add-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <form asp-action="AddUser" asp-controller="User" method="post">
+                    <div class="modal-header">
+                        <h5 class="mb-0">Add User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-sm-3 text-center mb-3">
+                                <div class="user-upload wid-75">
+                                    <img src="../assets/images/user/avatar-1.jpg" alt="img" class="img-fluid">
+                                    <label for="uplfile" class="img-avtar-upload">
+                                        <i class="ti ti-camera f-24 mb-1"></i>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <div class="form-group">
+                                    <label class="form-label">Username</label>
+                                    <input type="text" name="UserName" class="form-control" placeholder="Username" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Full Name</label>
+                                    <input type="text" name="FullName" class="form-control" placeholder="Full Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Email</label>
+                                    <input type="email" name="Email" class="form-control" placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" name="Password" class="form-control" placeholder="Password" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Role</label>
+                                    <select name="RoleId" class="form-select" required>
+                                        <option value="">Select Role</option>
+                                        @if (ViewBag.Roles != null)
+                                        {
+                                            @foreach (var role in ViewBag.Roles)
+                                            {
+                                                <option value="@role.Id">@role.Name</option>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <option value="">No roles available</option>
+                                        }
+                                    </select>
+                                </div>
+                                @* <div class="form-group">
+                                    <label class="form-label">Status</label>
+                                    <select name="IsActive" class="form-select" required>
+                                        <option value="true">Active</option>
+                                        <option value="false">Inactive</option>
+                                    </select>
+                                    <select name="IsActiveString" class="form-select" required>
+                                        <option value="true">Active</option>
+                                        <option value="false">Inactive</option>
+                                    </select>
+                                </div> *@
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer justify-content-between">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+<!-- Required Js -->
+<script src="../assets/js/plugins/popper.min.js"></script>
+<script src="../assets/js/plugins/simplebar.min.js"></script>
+<script src="../assets/js/plugins/bootstrap.min.js"></script>
+<script src="../assets/js/fonts/custom-font.js"></script>
+<script src="../assets/js/pcoded.js"></script>
+<script src="../assets/js/plugins/feather.min.js"></script>
+
+
+
+
+
+<script>layout_change('light');</script>
+
+
+
+
+<script>change_box_container('false');</script>
+
+
+
+<script>layout_rtl_change('false');</script>
+
+
+<script>preset_change("preset-1");</script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Tạo ánh xạ RoleName -> RoleId từ ViewBag.Roles
+            let roleMap = {};
+        @if (ViewBag.Roles != null)
+        {
+            foreach (var role in ViewBag.Roles)
+            {
+                @:roleMap["@role.Name"] = "@role.Id";
+            }
+        }
+
+                document.querySelectorAll(".edit-user-btn").forEach(button => {
+                    button.addEventListener("click", function () {
+                        console.log("Clicked button:", this);  // Debug xem nút được nhấn
+
+                        let userId = this.dataset.id;
+                        let userName = this.dataset.username;
+                        let fullName = this.dataset.fullname;
+                        let email = this.dataset.email;
+                        let roleName = this.dataset.role; // Lấy tên role thay vì ID
+
+                        console.log("UserId:", userId);
+                        console.log("UserName:", userName);
+                        console.log("Role Name:", roleName);
+
+                        // Tìm RoleId dựa trên tên Role
+                        let roleId = roleMap[roleName] || "";
+
+                        console.log("Mapped RoleId:", roleId); // Debug giá trị RoleId sau khi ánh xạ
+
+                        // Gán dữ liệu vào modal
+                        document.querySelector("#user-edit_add-modal input[name='Id']").value = userId;
+                        document.querySelector("#user-edit_add-modal input[name='UserName']").value = userName;
+                        document.querySelector("#user-edit_add-modal input[name='FullName']").value = fullName;
+                        document.querySelector("#user-edit_add-modal input[name='Email']").value = email;
+
+                        // Binding Role vào dropdown
+                        let roleDropdown = document.querySelector("#user-edit_add-modal select[name='RoleId']");
+                        if (roleDropdown) {
+                            roleDropdown.value = roleId;
+                            console.log("Dropdown RoleId set to:", roleDropdown.value);
+                        } else {
+                            console.error("Dropdown RoleId not found!");
+                        }
+                    });
+                });
+        });
+
+    </script>
+
+
+    
+
+  <!-- [Page Specific JS] start -->
+  <script src="../assets/js/plugins/simple-datatables.js"></script>
+  <!-- [Page Specific JS] end -->
+</body>
+<!-- [Body] end -->
+
+</html>
