@@ -1,12 +1,9 @@
 ﻿using Asset_Management.Models;
-using Asset_Management.ViewModels;
 
-namespace Asset_Management.Repositories.IRepositories
+namespace Asset_Management.Services.IServices
 {
-    public interface IRoleRepository
+    public interface IRoleService
     {
-        Task<List<RolesViewModel>> GetRolesAsync();
-
         Task<IEnumerable<Roles>> GetAllRolesAsync();
         Task<Roles> GetRoleByIdAsync(string id);
         Task AddRoleAsync(Roles role);

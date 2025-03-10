@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VloYAsQHrxA=",
+  "dgSpecHash": "OgDk9XRuzUM=",
   "success": true,
-  "projectFilePath": "D:\\PRN222\\Project\\Asset Management\\Asset Management\\Asset Management.csproj",
+  "projectFilePath": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Asset Management.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Nhat Anh\\.nuget\\packages\\azure.core\\1.44.1\\azure.core.1.44.1.nupkg.sha512",
     "C:\\Users\\Nhat Anh\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

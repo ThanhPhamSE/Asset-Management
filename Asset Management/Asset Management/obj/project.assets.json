@@ -4387,11 +4387,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\PRN222\\Project\\Asset Management\\Asset Management\\Asset Management.csproj",
+      "projectUniqueName": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Asset Management.csproj",
       "projectName": "Asset Management",
-      "projectPath": "D:\\PRN222\\Project\\Asset Management\\Asset Management\\Asset Management.csproj",
+      "projectPath": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Asset Management.csproj",
       "packagesPath": "C:\\Users\\Nhat Anh\\.nuget\\packages\\",
-      "outputPath": "D:\\PRN222\\Project\\Asset Management\\Asset Management\\obj\\",
+      "outputPath": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Nhat Anh\\AppData\\Roaming\\NuGet\\NuGet.Config",
