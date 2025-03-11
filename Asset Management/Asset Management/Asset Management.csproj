@@ -22,4 +22,8 @@
     <PackageReference Include="Microsoft.Graph" Version="5.72.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\assetsInProject\" />
+  </ItemGroup>
+
 </Project>

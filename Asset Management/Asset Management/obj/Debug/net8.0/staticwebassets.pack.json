@@ -2629,6 +2629,34 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\33706cf2-f621-41e6-96ba-45094ebc2e32_logo.png",
+      "PackagePath": "staticwebassets\\uploads\\33706cf2-f621-41e6-96ba-45094ebc2e32_logo.png"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\4a62fede-3eb2-49f0-aaa4-adf2e37cb823_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\4a62fede-3eb2-49f0-aaa4-adf2e37cb823_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\8503deb3-1d10-4525-9c0b-a83795471cb4_White Square.png",
+      "PackagePath": "staticwebassets\\uploads\\8503deb3-1d10-4525-9c0b-a83795471cb4_White Square.png"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\967b3fc7-fd4f-467f-aef7-5f2b4149bfb3_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\967b3fc7-fd4f-467f-aef7-5f2b4149bfb3_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\a1f03278-8da2-4939-8060-d013a1b13225_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\a1f03278-8da2-4939-8060-d013a1b13225_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\b67a8d00-8ba8-4e82-88c7-3ff38ab2acb2_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\b67a8d00-8ba8-4e82-88c7-3ff38ab2acb2_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\f6961342-fcc4-48e7-9e36-9ee31e7cdb92_White Square.png",
+      "PackagePath": "staticwebassets\\uploads\\f6961342-fcc4-48e7-9e36-9ee31e7cdb92_White Square.png"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Asset Management.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

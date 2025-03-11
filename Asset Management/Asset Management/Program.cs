@@ -44,6 +44,8 @@ namespace Asset_Management
             builder.Services.AddScoped<ICategoryService, CategoryService>();
             builder.Services.AddScoped<ILocationRepository, LocationRepository>();
             builder.Services.AddScoped<ILocationService, LocationService>();
+            builder.Services.AddScoped<IAssetService, AssetService>();
+            builder.Services.AddScoped<IAssetRepository, AssetRepository>();
 
             var app = builder.Build();
 

@@ -1,0 +1,320 @@
+﻿@model IEnumerable<Asset_Management.ViewModels.AssetViewModel>;
+
+@{
+    ViewData["Title"] = "Asset Management";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- [Head] start -->
+
+<head>
+    <title>Asset Management</title>
+    <!-- [Meta] -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Mantis is made using Bootstrap 5 design framework. Download the free admin template & use it for your project.">
+    <meta name="keywords" content="Mantis, Dashboard UI Kit, Bootstrap 5, Admin Template, Admin Dashboard, CRM, CMS, Bootstrap Admin Template">
+    <meta name="author" content="CodedThemes">
+
+    <!-- [Favicon] icon -->
+    <link rel="icon" href="../assets/images/favicon.svg" type="image/x-icon"> <!-- [Google Font] Family -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap" id="main-font-link">
+    <!-- [Tabler Icons] https://tablericons.com -->
+    <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+    <!-- [Feather Icons] https://feathericons.com -->
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+    <!-- [Font Awesome Icons] https://fontawesome.com/icons -->
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <!-- [Material Icons] https://fonts.google.com/icons -->
+    <link rel="stylesheet" href="../assets/fonts/material.css">
+    <!-- [Template CSS Files] -->
+    <link rel="stylesheet" href="../assets/css/style.css" id="main-style-link">
+    <link rel="stylesheet" href="../assets/css/style-preset.css">
+
+</head>
+<!-- [Head] end -->
+<!-- [Body] Start -->
+
+<body>
+
+
+
+    <partial name="_NavbarPartial" />
+
+
+
+
+    <!-- [ Main Content ] start -->
+    <div class="pc-container">
+        <div class="pc-content">
+            @* <div class="row px-4 pb-3">
+                <div class="col-md-4">
+                    <label for="filterStatus" class="form-label">Filter by Status:</label>
+                    <select id="filterStatus" class="form-select" onchange="filterTable()">
+                        <option value="">All</option>
+                        @foreach (var status in ViewBag.Statuses)
+                        {
+                            <option value="@status.StatusId">@status.StatusName</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="filterLocation" class="form-label">Filter by Location:</label>
+                    <select id="filterLocation" class="form-select" onchange="filterTable()">
+                        <option value="">All</option>
+                        @foreach (var location in ViewBag.Locations)
+                        {
+                            <option value="@location.LocationId">@location.LocationName</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="col-md-4">
+                    <label for="filterCategory" class="form-label">Filter by Category:</label>
+                    <select id="filterCategory" class="form-select" onchange="filterTable()">
+                        <option value="">All</option>
+                        @foreach (var category in ViewBag.Categories)
+                        {
+                            <option value="@category.CategoryId">@category.CategoryName</option>
+                        }
+                    </select>
+                </div>
+            </div> *@
+
+            <form method="get" action="@Url.Action("List")">
+                <div class="row px-4 pb-3">
+                    <!-- Filter by Status -->
+                    <div class="col-md-4">
+                        <label for="filterStatus" class="form-label">Filter by Status:</label>
+                        <select id="filterStatus" name="statusId" class="form-select" onchange="this.form.submit()">
+                            <option value="" selected="@(string.IsNullOrEmpty(Context.Request.Query["statusId"]) ? "selected" : null)">All</option>
+                            @foreach (var status in ViewBag.Statuses)
+                            {
+                                var isSelected = Context.Request.Query["statusId"] == status.StatusId.ToString() ? "selected" : null;
+                                <option value="@status.StatusId" selected="@isSelected">@status.StatusName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Filter by Location -->
+                    <div class="col-md-4">
+                        <label for="filterLocation" class="form-label">Filter by Location:</label>
+                        <select id="filterLocation" name="locationId" class="form-select" onchange="this.form.submit()">
+                            <option value="" selected="@(string.IsNullOrEmpty(Context.Request.Query["locationId"]) ? "selected" : null)">All</option>
+                            @foreach (var location in ViewBag.Locations)
+                            {
+                                var isSelected = Context.Request.Query["locationId"] == location.LocationId.ToString() ? "selected" : null;
+                                <option value="@location.LocationId" selected="@isSelected">@location.LocationName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <!-- Filter by Category -->
+                    <div class="col-md-4">
+                        <label for="filterCategory" class="form-label">Filter by Category:</label>
+                        <select id="filterCategory" name="categoryId" class="form-select" onchange="this.form.submit()">
+                            <option value="" selected="@(string.IsNullOrEmpty(Context.Request.Query["categoryId"]) ? "selected" : null)">All</option>
+                            @foreach (var category in ViewBag.Categories)
+                            {
+                                var isSelected = Context.Request.Query["categoryId"] == category.CategoryId.ToString() ? "selected" : null;
+                                <option value="@category.CategoryId" selected="@isSelected">@category.CategoryName</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+            </form>
+
+
+
+
+
+
+
+            <!-- [ Main Content ] start -->
+            <div class="row">
+                <!-- [ sample-page ] start -->
+                <div class="col-sm-12">
+                    <div class="card table-card">
+                        <div class="card-body">
+                            <div class="text-end p-4 pb-0">
+                                <a asp-controller="Asset" asp-action="CreateAsset" class="btn btn-primary">
+                                    <i class="ti ti-plus f-18"></i> Add Asset
+                                </a>
+                            </div>
+
+
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="pc-dt-simple">
+                                    <thead>
+                                        <tr>
+                                            <th></th>
+                                            <th class="text-end">#</th>
+                                            <th>Asset</th>
+                                            <th>Categories</th>
+                                            <th>Purchase Date</th>
+                                            <th>Purchase Price</th>
+                                            <th>Current Value</th>
+                                            <th>Location</th>
+                                            <th>Status</th>
+                                            <th class="text-center">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        
+                                        @foreach (var asset in Model)
+                                        {
+                                        <tr>
+                                            <td>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox">
+                                                </div>
+                                            </td>
+                                            <td class="text-end">@asset.AssetId</td>
+                                            <td>
+                                                <div class="row">
+                                                    <div class="col-auto pe-0">
+                                                            <img src="@asset.ImagePath" alt="user-image"
+                                                             class="wid-40 rounded-circle">
+                                                    </div>
+                                                    <div class="col">
+                                                        <h6 class="mb-1">@asset.AssetName</h6>
+                                                        <p class="text-muted f-12 mb-0">@asset.AssetCode</p>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>@asset.CategoryName</td>
+                                            <td>@asset.PurchaseDate.ToShortDateString()</td>
+                                           <td>@(asset.PurchasePrice.ToString("C"))</td>
+                                            <td>@(asset.CurrentValue.HasValue ? asset.CurrentValue.Value.ToString("C") : "N/A")</td>
+                                            <td>@asset.LocationName</td>
+                                            <td><span class="badge bg-light-success f-12">@asset.StatusName</span> </td>
+                                            <td class="text-center">
+                                                <ul class="list-inline me-auto mb-0">
+                                                   @* <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
+                                                      <a href="#" class="avtar avtar-xs btn-link-secondary" data-bs-toggle="modal"
+                                                        data-bs-target="#cust-modal">
+                                                        <i class="ti ti-eye f-18"></i>
+                                                      </a>
+                                                    </li> *@
+                                                    <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
+                                                        <a asp-controller="Asset" asp-action="Edit" asp-route-id="@asset.AssetId" class="avtar avtar-xs btn-link-primary">
+                                                            <i class="ti ti-edit-circle f-18"></i>
+                                                        </a>
+                                                    </li>
+                                                    <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Delete">
+                                                        <a href="#" class="avtar avtar-xs btn-link-danger">
+                                                            <i class="ti ti-trash f-18"></i>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                            </td>
+                                        </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ sample-page ] end -->
+            </div>
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+    <div class="modal fade" id="cust-modal" data-bs-keyboard="false" tabindex="-1"
+         aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="mb-0">Product Details</h5>
+                    <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
+                        <i class="ti ti-x f-20"></i>
+                    </a>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="bg-light rounded position-relative">
+                                <div class="position-absolute end-0 top-0 p-3">
+                                    <span class="badge bg-light-success">In Stock</span>
+                                </div>
+                                <div class="text-center mt-3">
+                                    <div class="chat-avtar d-inline-flex mx-auto">
+                                        <img class="img-fluid" src="../assets/images/application/prod-img-5.png"
+                                             alt="User image">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-8">
+                            <h5>Canon EOS 1500D 24.1 Digital</h5>
+                            <p class="text-muted">Image Enlargement: After shooting, you can enlarge photographs of the objects for clear zoomed view. Change In Aspect Ratio: Boldly crop the subject and save it with a composition that has impact. You can convert it to a 1:1 square format, and after shooting you can create a photo that will be popular on SNS.</p>
+                            <div class="star f-18 mb-3">
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star text-warning"></i>
+                                <i class="fas fa-star-half-alt text-warning"></i>
+                                <i class="far fa-star text-muted"></i>
+                            </div>
+                            <div class="table-responsive">
+                                <table class="table w-auto table-borderless">
+                                    <tbody>
+                                        <tr>
+                                            <td class="text-muted py-1">Categories</td>
+                                            <td class="py-1">Electronics, Camera</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Qty</td>
+                                            <td class="py-1">21</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-muted py-1">Price</td>
+                                            <td class="py-1"><h5 class="mb-0">$399</h5></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- [ Main Content ] end -->
+    <!-- Required Js -->
+    <script src="../assets/js/plugins/popper.min.js"></script>
+    <script src="../assets/js/plugins/simplebar.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../assets/js/fonts/custom-font.js"></script>
+    <script src="../assets/js/pcoded.js"></script>
+    <script src="../assets/js/plugins/feather.min.js"></script>
+
+
+
+
+
+    <script>layout_change('light');</script>
+
+
+
+
+    <script>change_box_container('false');</script>
+
+
+
+    <script>layout_rtl_change('false');</script>
+
+
+    <script>preset_change("preset-1");</script>
+
+
+    <script>font_change("Public-Sans");</script>
+
+</body>
+<!-- [Body] end -->
+
+</html>

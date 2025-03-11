@@ -21,8 +21,10 @@ namespace Asset_Management.Models
         public DateTime PurchaseDate { get; set; }
 
         [Required]
+        [Column(TypeName = "decimal(18,2)")]
         public decimal PurchasePrice { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
         public decimal? CurrentValue { get; set; }
 
         [Range(0, 100)]

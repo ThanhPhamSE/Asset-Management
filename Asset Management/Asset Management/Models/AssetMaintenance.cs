@@ -17,6 +17,7 @@ namespace Asset_Management.Models
         [Required, MaxLength(100)]
         public string MaintenanceType { get; set; }
 
+        [Column(TypeName = "decimal(18,2)")]
         public decimal? MaintenanceCost { get; set; }
 
         [Required]
