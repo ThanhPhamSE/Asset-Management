@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3zNbqwJg25Yeo8w0yMx/DOAPnGiRe/wqQHcd314KsWI=",
+  "Hash": "Vk0+1WFxK59J0lJpM3kiuRFyZVJI7RzmulE1Kenbf+c=",
   "Source": "Asset Management",
   "BasePath": "_content/Asset Management",
   "Mode": "Default",
@@ -12519,6 +12519,25 @@
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
+      "Identity": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\1d43a112-9a55-4f44-ac9d-9d5861f9e31f_White Square.png",
+      "SourceId": "Asset Management",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\",
+      "BasePath": "_content/Asset Management",
+      "RelativePath": "uploads/1d43a112-9a55-4f44-ac9d-9d5861f9e31f_White Square.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\1d43a112-9a55-4f44-ac9d-9d5861f9e31f_White Square.png"
+    },
+    {
       "Identity": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\33706cf2-f621-41e6-96ba-45094ebc2e32_logo.png",
       "SourceId": "Asset Management",
       "SourceType": "Discovered",
@@ -12536,6 +12555,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\33706cf2-f621-41e6-96ba-45094ebc2e32_logo.png"
+    },
+    {
+      "Identity": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\3f173a9b-b701-499f-bc56-c2d7832618da_White Square.png",
+      "SourceId": "Asset Management",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\",
+      "BasePath": "_content/Asset Management",
+      "RelativePath": "uploads/3f173a9b-b701-499f-bc56-c2d7832618da_White Square.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\3f173a9b-b701-499f-bc56-c2d7832618da_White Square.png"
     },
     {
       "Identity": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\4a62fede-3eb2-49f0-aaa4-adf2e37cb823_logo.jpg",

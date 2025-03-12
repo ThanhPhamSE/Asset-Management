@@ -58,10 +58,52 @@ namespace Asset_Management.Services
             await _assetRepository.AddAsync(asset);
         }
 
+        //public async Task UpdateAssetAsync(AssetViewModel assetViewModel)
+        //{
+
+
+        //    // Xử lý ảnh
+        //    if (assetViewModel.ImageFile != null)
+        //    {
+        //        string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
+        //        Directory.CreateDirectory(uploadsFolder);
+
+        //        string uniqueFileName = $"{Guid.NewGuid()}_{assetViewModel.ImageFile.FileName}";
+        //        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+        //        using (var fileStream = new FileStream(filePath, FileMode.Create))
+        //        {
+        //            await assetViewModel.ImageFile.CopyToAsync(fileStream);
+        //        }
+
+        //        // Xóa ảnh cũ nếu có
+        //        if (!string.IsNullOrEmpty(assetViewModel.ImagePath))
+        //        {
+        //            string oldFilePath = Path.Combine(_environment.WebRootPath, assetViewModel.ImagePath.TrimStart('/'));
+        //            if (System.IO.File.Exists(oldFilePath))
+        //            {
+        //                System.IO.File.Delete(oldFilePath);
+        //            }
+        //        }
+
+        //        assetViewModel.ImagePath = "/uploads/" + uniqueFileName;
+        //    }
+
+
+        //    var asset = MapToModel(assetViewModel);
+        //    await _assetRepository.UpdateAsync(asset);
+        //}
+
         public async Task UpdateAssetAsync(AssetViewModel assetViewModel)
         {
+            var existingAsset = await _assetRepository.GetByIdAsync(assetViewModel.AssetId);
+            if (existingAsset == null)
+            {
+                throw new InvalidOperationException("Tài sản không tồn tại.");
+            }
 
-            // Xử lý ảnh
+            string? existingImagePath = existingAsset.ImageUrl;
+
             if (assetViewModel.ImageFile != null)
             {
                 string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
@@ -76,9 +118,9 @@ namespace Asset_Management.Services
                 }
 
                 // Xóa ảnh cũ nếu có
-                if (!string.IsNullOrEmpty(assetViewModel.ImagePath))
+                if (!string.IsNullOrEmpty(existingImagePath))
                 {
-                    string oldFilePath = Path.Combine(_environment.WebRootPath, assetViewModel.ImagePath.TrimStart('/'));
+                    string oldFilePath = Path.Combine(_environment.WebRootPath, existingImagePath.TrimStart('/'));
                     if (System.IO.File.Exists(oldFilePath))
                     {
                         System.IO.File.Delete(oldFilePath);
@@ -87,11 +129,15 @@ namespace Asset_Management.Services
 
                 assetViewModel.ImagePath = "/uploads/" + uniqueFileName;
             }
+            else
+            {
+                assetViewModel.ImagePath = existingImagePath;
+            }
 
-
-            var asset = MapToModel(assetViewModel);
-            await _assetRepository.UpdateAsync(asset);
+            var updatedAsset = MapToModel(existingAsset, assetViewModel);
+            await _assetRepository.UpdateAsync(updatedAsset);
         }
+
 
         public async Task DeleteAssetAsync(int id)
         {
@@ -137,6 +183,22 @@ namespace Asset_Management.Services
                 ImageUrl = assetViewModel.ImagePath,
                 LocationId = assetViewModel.LocationId
             };
+        }
+
+        private static Asset MapToModel(Asset existingAsset, AssetViewModel assetViewModel)
+        {
+            existingAsset.AssetCode = assetViewModel.AssetCode;
+            existingAsset.AssetName = assetViewModel.AssetName;
+            existingAsset.CategoryId = assetViewModel.CategoryId;
+            existingAsset.PurchaseDate = assetViewModel.PurchaseDate;
+            existingAsset.PurchasePrice = assetViewModel.PurchasePrice;
+            existingAsset.CurrentValue = assetViewModel.CurrentValue;
+            existingAsset.DepreciationRate = assetViewModel.DepreciationRate;
+            existingAsset.StatusId = assetViewModel.StatusId;
+            existingAsset.ImageUrl = assetViewModel.ImagePath;
+            existingAsset.LocationId = assetViewModel.LocationId;
+
+            return existingAsset; // Trả về đối tượng đã cập nhật
         }
 
         public async Task<IEnumerable<CategoryViewModel>> GetCategoriesAsync()

@@ -46,6 +46,8 @@ namespace Asset_Management
             builder.Services.AddScoped<ILocationService, LocationService>();
             builder.Services.AddScoped<IAssetService, AssetService>();
             builder.Services.AddScoped<IAssetRepository, AssetRepository>();
+            builder.Services.AddScoped<IAssetMaintenanceRepository, AssetMaintenanceRepository>();
+            builder.Services.AddScoped<IAssetMaintenanceService, AssetMaintenanceService>();
 
             var app = builder.Build();
 
@@ -64,9 +66,13 @@ namespace Asset_Management
 
             app.UseAuthorization();
 
+            //app.MapControllerRoute(
+            //    name: "default",
+            //    pattern: "{controller=Home}/{action=Index}/{id?}");
+
             app.MapControllerRoute(
-                name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+               name: "default",
+               pattern: "{controller=Account}/{action=Login}/{id?}");
 
             app.Run();
         }
