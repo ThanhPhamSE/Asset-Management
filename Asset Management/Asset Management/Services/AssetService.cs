@@ -219,5 +219,9 @@ namespace Asset_Management.Services
             return locations.Select(l => new LocationViewModel { LocationId = l.LocationId, LocationName = l.LocationName });
         }
 
+        public async Task<Asset> GetAssetByCodeAsync(string assetCode)
+        {
+            return await _assetRepository.GetAssetByCodeAsync(assetCode);
+        }
     }
 }

@@ -42,6 +42,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRNYWludGVuYW5jZVxMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/PRN222/Project/Asset-Management/Asset Management/Asset Management/Views/AssetMovement/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRNb3ZlbWVudFxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[D:/PRN222/Project/Asset-Management/Asset Management/Asset Management/Views/AssetMovement/List.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRNb3ZlbWVudFxMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/PRN222/Project/Asset-Management/Asset Management/Asset Management/Views/Asset/CreateAsset.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQ3JlYXRlQXNzZXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -15,6 +15,8 @@ namespace Asset_Management.Services.IServices
         Task<IEnumerable<CategoryViewModel>> GetCategoriesAsync();
         Task<IEnumerable<StatusViewModel>> GetStatusesAsync();
         Task<IEnumerable<LocationViewModel>> GetLocationsAsync();
+
+        Task<Asset> GetAssetByCodeAsync(string assetCode);
     }
 }
 

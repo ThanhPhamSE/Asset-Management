@@ -93,5 +93,11 @@ namespace Asset_Management.Repositories
         {
             return await _context.Locations.ToListAsync();
         }
+
+        public async Task<Asset> GetAssetByCodeAsync(string assetCode)
+        {
+            return await _context.Assets
+                .FirstOrDefaultAsync(a => a.AssetCode == assetCode);
+        }
     }
 }

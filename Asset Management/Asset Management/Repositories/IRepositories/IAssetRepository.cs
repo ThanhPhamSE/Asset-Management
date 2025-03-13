@@ -15,5 +15,7 @@ namespace Asset_Management.Repositories.IRepositories
         Task<IEnumerable<Category>> GetCategoriesAsync();
         Task<IEnumerable<Status>> GetStatusesAsync();
         Task<IEnumerable<Location>> GetLocationsAsync();
+
+        Task<Asset> GetAssetByCodeAsync(string assetCode);
     }
 }

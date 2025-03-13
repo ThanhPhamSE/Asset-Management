@@ -1,0 +1,175 @@
+﻿@model Asset_Management.ViewModels.AssetMovementViewModel
+
+@{
+    ViewData["Title"] = "Create Asset Movement";
+}
+
+<h2>Create Asset Movement</h2>
+
+<!-- Form chọn Asset -->
+@* <form asp-action="Create" method="get">
+    <div class="form-group">
+        <label for="AssetCode">Asset</label>
+        <select id="AssetCode" name="assetCode" class="form-control" onchange="this.form.submit()"
+                asp-items="ViewBag.Assets">
+            <option value="">-- Select Asset --</option>
+        </select>
+    </div>
+</form> *@
+
+<!-- Form chính -->
+@* <form asp-action="Create" method="post">
+    <input type="hidden" name="AssetCode" value="@Model.AssetCode" />
+
+    <div class="form-group">
+        <label for="FromLocation">From Location</label>
+        <input type="text" id="FromLocation" name="FromLocation" class="form-control" value="@Model.FromLocation" readonly />
+    </div>
+
+    <div class="form-group">
+        <label for="ToLocation">To Location</label>
+        <select id="ToLocation" name="ToLocation" class="form-control" asp-items="ViewBag.Locations">
+            <option value="">-- Select Location --</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="MoveDate">Movement Date</label>
+        <input type="date" id="MovementDate" name="MoveDate" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label for="ResponsiblePerson">Responsible Person</label>
+        <input type="text" id="ResponsiblePerson" name="ResponsiblePerson" class="form-control" value="@Model.ResponsiblePerson" />
+        <span asp-validation-for="ResponsiblePerson" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+</form> *@
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @* <title>Edit Asset</title> *@
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="../assets/fonts/material.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style-preset.css">
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/fonts/tabler-icons.min.css" rel="stylesheet" />
+    <link href="~/assets/fonts/feather.css" rel="stylesheet" />
+    <link href="~/assets/fonts/fontawesome.css" rel="stylesheet" />
+    <link href="~/assets/fonts/material.css" rel="stylesheet" />
+    <link href="~/assets/css/style-preset.css" rel="stylesheet" />
+</head>
+<body>
+    <partial name="_NavbarPartial" />
+
+    <div class="pc-container">
+        <div class="pc-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-action="List" asp-controller="Asset">Assets</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Add Asset Movement</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h2 class="mb-0">Add Asset Movement</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form asp-action="Create" method="get">
+                <div class="form-group">
+                    <label for="AssetCode">Asset</label>
+                    <select id="AssetCode" name="assetCode" class="form-control" onchange="this.form.submit()"
+                            asp-items="ViewBag.Assets">
+                        <option value="">-- Select Asset --</option>
+                    </select>
+                </div>
+            </form>
+
+            <!-- [ Main Content ] start -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" name="AssetCode" value="@Model.AssetCode" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Cột trái -->
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label for="FromLocation">From Location</label>
+                                                    <input type="text" id="FromLocation" name="FromLocation" class="form-control" value="@Model.FromLocation" readonly />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="ToLocation">To Location</label>
+                                                    <select id="ToLocation" name="ToLocation" class="form-control" asp-items="ViewBag.Locations">
+                                                        <option value="">-- Select Location --</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label for="MoveDate">Movement Date</label>
+                                                    <input type="date" id="MovementDate" name="MoveDate" class="form-control" />
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="ResponsiblePerson">Responsible Person</label>
+                                                    <input type="text" id="ResponsiblePerson" name="ResponsiblePerson" class="form-control" value="@Model.ResponsiblePerson" />
+                                                    <span asp-validation-for="ResponsiblePerson" class="text-danger"></span>
+                                                </div>
+                                                <div class="text-end btn-page mb-0 mt-4">
+                                                    <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                                    <button type="submit" class="btn btn-primary">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+
+    <!-- [ Scripts ] -->
+    <script src="../assets/js/plugins/popper.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/feather.min.js"></script>
+    <script src="../assets/js/pcoded.js"></script>
+    <script>layout_change('light');</script>
+</body>
+</html>
+
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var today = new Date().toISOString().split("T")[0];
+        document.getElementById("MovementDate").setAttribute("max", today);
+    });
+</script>
+

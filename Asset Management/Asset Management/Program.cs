@@ -48,6 +48,8 @@ namespace Asset_Management
             builder.Services.AddScoped<IAssetRepository, AssetRepository>();
             builder.Services.AddScoped<IAssetMaintenanceRepository, AssetMaintenanceRepository>();
             builder.Services.AddScoped<IAssetMaintenanceService, AssetMaintenanceService>();
+            builder.Services.AddScoped<IAssetMovementService, AssetMovementService>();
+            builder.Services.AddScoped<IAssetMovementRepository, AssetMovementRepository>();
 
             var app = builder.Build();
 
