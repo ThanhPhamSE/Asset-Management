@@ -3,12 +3,16 @@
   "WorkspaceRootPath": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\assetmovement\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\assetmovement\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\assetcheck\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\assetcheck\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\assetmaintenance\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\assetmaintenance\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\assetcheck\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\assetcheck\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\assetcheck\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\assetcheck\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +22,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,28 +30,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "List.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetMaintenance\\List.cshtml",
-              "RelativeDocumentMoniker": "Asset Management\\Views\\AssetMaintenance\\List.cshtml",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetMaintenance\\List.cshtml",
-              "RelativeToolTip": "Asset Management\\Views\\AssetMaintenance\\List.cshtml",
-              "ViewState": "AQIAAKAAAAAAAAAAAAAAwMYAAAAAAAAA",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetCheck\\List.cshtml",
+              "RelativeDocumentMoniker": "Asset Management\\Views\\AssetCheck\\List.cshtml",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetCheck\\List.cshtml",
+              "RelativeToolTip": "Asset Management\\Views\\AssetCheck\\List.cshtml",
+              "ViewState": "AQIAACQAAAAAAAAAAAAAADUAAABlAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T08:58:27.903Z",
+              "WhenOpened": "2025-03-13T15:05:59.846Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetMovement\\List.cshtml",
-              "RelativeDocumentMoniker": "Asset Management\\Views\\AssetMovement\\List.cshtml",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetMovement\\List.cshtml",
-              "RelativeToolTip": "Asset Management\\Views\\AssetMovement\\List.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAALAAAA",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetCheck\\Create.cshtml",
+              "RelativeDocumentMoniker": "Asset Management\\Views\\AssetCheck\\Create.cshtml",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetCheck\\Create.cshtml",
+              "RelativeToolTip": "Asset Management\\Views\\AssetCheck\\Create.cshtml",
+              "ViewState": "AQIAAGYAAAAAAAAAAAAAAHwAAAAHAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-13T08:58:14.59Z",
+              "WhenOpened": "2025-03-13T15:03:29.534Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetCheck\\Edit.cshtml",
+              "RelativeDocumentMoniker": "Asset Management\\Views\\AssetCheck\\Edit.cshtml",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\AssetCheck\\Edit.cshtml",
+              "RelativeToolTip": "Asset Management\\Views\\AssetCheck\\Edit.cshtml",
+              "ViewState": "AQIAAD0AAAAAAAAAAAAAwFIAAABcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-13T15:03:01.244Z",
               "EditorCaption": ""
             }
           ]

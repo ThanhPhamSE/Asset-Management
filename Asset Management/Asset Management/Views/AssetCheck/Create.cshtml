@@ -1,0 +1,147 @@
+﻿@model Asset_Management.ViewModels.AssetCheckViewModel
+
+@{
+    ViewData["Title"] = "Add Asset Check";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    @* <title>Edit Asset</title> *@
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../assets/fonts/tabler-icons.min.css">
+    <link rel="stylesheet" href="../assets/fonts/feather.css">
+    <link rel="stylesheet" href="../assets/fonts/fontawesome.css">
+    <link rel="stylesheet" href="../assets/fonts/material.css">
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/style-preset.css">
+    <link href="~/assets/css/style.css" rel="stylesheet" />
+    <link href="~/assets/fonts/tabler-icons.min.css" rel="stylesheet" />
+    <link href="~/assets/fonts/feather.css" rel="stylesheet" />
+    <link href="~/assets/fonts/fontawesome.css" rel="stylesheet" />
+    <link href="~/assets/fonts/material.css" rel="stylesheet" />
+    <link href="~/assets/css/style-preset.css" rel="stylesheet" />
+</head>
+<body>
+    <partial name="_NavbarPartial" />
+
+    <div class="pc-container">
+        <div class="pc-content">
+            <div class="page-header">
+                <div class="page-block">
+                    <div class="row align-items-center">
+                        <div class="col-md-12">
+                            <ul class="breadcrumb">
+                                <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Home</a></li>
+                                <li class="breadcrumb-item"><a asp-action="List" asp-controller="Asset">Assets</a></li>
+                                <li class="breadcrumb-item" aria-current="page">Add Asset Movement</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="page-header-title">
+                                <h2 class="mb-0">Add Asset Check</h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <form id="selectAssetForm" method="post">
+                <div class="form-group">
+                    <label>Asset</label>
+                    <select asp-for="AssetId" asp-items="ViewBag.Assets" class="form-control">
+                        <option value="">-- Select Asset --</option>
+                    </select>
+                </div>
+            </form>
+
+            <!-- [ Main Content ] start -->
+            <form asp-action="Create" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+                <input type="hidden" asp-for="AssetId" id="AssetIdHidden" />
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row">
+                                    <!-- Cột trái -->
+                                    <div class="col-md-12">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <div class="form-group">
+                                                    <label>Location</label>
+                                                    <input type="text" id="LocationName" class="form-control" readonly />
+                                                    <input type="hidden" asp-for="LocationId" id="LocationId" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Status</label>
+                                                    <select asp-for="StatusId" asp-items="ViewBag.Statuses" class="form-control">
+                                                        <option value="">-- Select Status --</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Check Date</label>
+                                                    <input asp-for="CheckDate" type="date" class="form-control" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Checked By</label>
+                                                    <input asp-for="CheckedBy" class="form-control" />
+                                                </div>
+
+                                                <div class="form-group">
+                                                    <label>Notes</label>
+                                                    <textarea asp-for="Notes" class="form-control"></textarea>
+                                                </div>
+                                                <div class="text-end btn-page mb-0 mt-4">
+                                                    <button type="reset" class="btn btn-outline-secondary">Cancel</button>
+                                                    <button type="submit" class="btn btn-success">Save</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+
+    <!-- [ Scripts ] -->
+    <script src="../assets/js/plugins/popper.min.js"></script>
+    <script src="../assets/js/plugins/bootstrap.min.js"></script>
+    <script src="../assets/js/plugins/feather.min.js"></script>
+    <script src="../assets/js/pcoded.js"></script>
+    <script>layout_change('light');</script>
+</body>
+</html>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#AssetId").change(function () {
+            var assetId = $(this).val();
+            if (assetId) {
+                $.getJSON("/AssetCheck/GetAssetDetails", { assetId: assetId }, function (data) {
+                    console.log("Received data:", data); // Debug JSON response
+                    if (data) {
+                        $("#LocationId").val(data.locationId);
+                        $("#LocationName").val(data.locationName);
+                        $("#StatusId").val(data.statusId);
+                        $("#AssetIdHidden").val(assetId);
+                    }
+                }).fail(function (jqXHR, textStatus, errorThrown) {
+                    console.error("Error fetching asset details:", textStatus, errorThrown);
+                });
+            }
+        });
+    });
+</script>
