@@ -11,5 +11,7 @@ namespace Asset_Management.Services.IServices
         Task<List<RolesViewModel>> GetRolesAsync();
         Task<bool> AddUserAsync(UserViewModel model);
         Task<bool> DeleteUserAsync(string userId);
+        Task<ProfileViewModel> GetProfileAsync(string userId);
+        Task<bool> UpdateProfileAsync(string userId, ProfileViewModel model);
     }
 }

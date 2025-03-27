@@ -13,12 +13,14 @@ namespace Asset_Management.Services
         private readonly IUserRepository _userRepository;
         private readonly RoleManager<Roles> _roleManager;
         private readonly IRoleRepository _roleRepository;
+        private readonly UserManager<Users> _userManager;
 
-        public UserService(IUserRepository userRepository, RoleManager<Roles> roleManager, IRoleRepository roleRepository)
+        public UserService(IUserRepository userRepository, RoleManager<Roles> roleManager, IRoleRepository roleRepository, UserManager<Users> userManager)
         {
             _userRepository = userRepository;
             _roleManager = roleManager;
             _roleRepository = roleRepository;
+            _userManager = userManager;
         }
 
         public async Task<IEnumerable<UserViewModel>> GetAllUsersAsync()
@@ -88,6 +90,40 @@ namespace Asset_Management.Services
             return await _userRepository.DeleteUserAsync(userId);
         }
 
+        public async Task<ProfileViewModel> GetProfileAsync(string userId)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return null;
+
+            return new ProfileViewModel
+            {
+                FullName = user.FullName,
+                Email = user.Email,
+                PhoneNumber = user.PhoneNumber,
+                UserName = user.UserName
+            };
+        }
+
+        public async Task<bool> UpdateProfileAsync(string userId, ProfileViewModel model)
+        {
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null) return false;
+
+            // Cập nhật thông tin cá nhân
+            user.FullName = model.FullName;
+            user.PhoneNumber = model.PhoneNumber;
+            user.UserName = model.UserName;
+            var updateResult = await _userManager.UpdateAsync(user);
+
+            // Nếu có đổi mật khẩu
+            if (!string.IsNullOrEmpty(model.CurrentPassword) && !string.IsNullOrEmpty(model.NewPassword))
+            {
+                var passwordResult = await _userManager.ChangePasswordAsync(user, model.CurrentPassword, model.NewPassword);
+                return updateResult.Succeeded && passwordResult.Succeeded;
+            }
+
+            return updateResult.Succeeded;
+        }
     }
 
 }
