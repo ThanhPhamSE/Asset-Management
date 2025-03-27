@@ -61,7 +61,7 @@ namespace Asset_Management.Controllers
                 var result = await signInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("List", "Asset");
                 }
                 else
                 {

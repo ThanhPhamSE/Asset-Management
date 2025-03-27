@@ -2629,6 +2629,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\057f7cff-e6b0-42c5-b624-bb1965ceb828_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\057f7cff-e6b0-42c5-b624-bb1965ceb828_logo.jpg"
+    },
+    {
       "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\1d43a112-9a55-4f44-ac9d-9d5861f9e31f_White Square.png",
       "PackagePath": "staticwebassets\\uploads\\1d43a112-9a55-4f44-ac9d-9d5861f9e31f_White Square.png"
     },
@@ -2637,12 +2641,16 @@
       "PackagePath": "staticwebassets\\uploads\\33706cf2-f621-41e6-96ba-45094ebc2e32_logo.png"
     },
     {
-      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\3f173a9b-b701-499f-bc56-c2d7832618da_White Square.png",
-      "PackagePath": "staticwebassets\\uploads\\3f173a9b-b701-499f-bc56-c2d7832618da_White Square.png"
-    },
-    {
       "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\4a62fede-3eb2-49f0-aaa4-adf2e37cb823_logo.jpg",
       "PackagePath": "staticwebassets\\uploads\\4a62fede-3eb2-49f0-aaa4-adf2e37cb823_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\5fc8d969-ba4a-407b-9c5b-ea096094b417_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\5fc8d969-ba4a-407b-9c5b-ea096094b417_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\6cd5f416-eefc-423a-a168-2951d5ef768a_logo.jpg",
+      "PackagePath": "staticwebassets\\uploads\\6cd5f416-eefc-423a-a168-2951d5ef768a_logo.jpg"
     },
     {
       "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\8503deb3-1d10-4525-9c0b-a83795471cb4_White Square.png",
@@ -2659,6 +2667,10 @@
     {
       "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\b67a8d00-8ba8-4e82-88c7-3ff38ab2acb2_logo.jpg",
       "PackagePath": "staticwebassets\\uploads\\b67a8d00-8ba8-4e82-88c7-3ff38ab2acb2_logo.jpg"
+    },
+    {
+      "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\f0003e1b-4f3e-4dd3-9fb3-470861f2175b_Screenshot 2025-03-03 201653.png",
+      "PackagePath": "staticwebassets\\uploads\\f0003e1b-4f3e-4dd3-9fb3-470861f2175b_Screenshot 2025-03-03 201653.png"
     },
     {
       "Id": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\wwwroot\\uploads\\f6961342-fcc4-48e7-9e36-9ee31e7cdb92_White Square.png",

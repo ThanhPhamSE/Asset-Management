@@ -1,5 +1,6 @@
 ﻿using Asset_Management.Services.IServices;
 using Asset_Management.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Asset_Management.Controllers
@@ -12,7 +13,7 @@ namespace Asset_Management.Controllers
         {
             _categoryService = categoryService;
         }
-
+        
         public async Task<IActionResult> List()
         {
             var categories = await _categoryService.GetAllCategoriesAsync();
@@ -24,9 +25,18 @@ namespace Asset_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _categoryService.AddCategoryAsync(model);
+                try
+                {
+                    await _categoryService.AddCategoryAsync(model);
+                    TempData["SuccessCategoryMessage"] = "Thêm danh mục thành công!";
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorCategoryMessage"] = $"Có lỗi xảy ra: {ex.Message}";
+                }
                 return RedirectToAction("List");
             }
+            TempData["ErrorCategoryMessage"] = "Dữ liệu không hợp lệ, vui lòng kiểm tra lại thông tin.";
             return RedirectToAction("List");
         }
 
@@ -35,9 +45,22 @@ namespace Asset_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _categoryService.UpdateCategoryAsync(model);
+                try
+                {
+                    await _categoryService.UpdateCategoryAsync(model);
+                    TempData["SuccessCategoryMessage"] = "Cập nhật danh mục thành công!";
+                }
+                catch (InvalidOperationException ex)
+                {
+                    TempData["ErrorCategoryMessage"] = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorCategoryMessage"] = $"Có lỗi xảy ra: {ex.Message}";
+                }
                 return RedirectToAction("List");
             }
+            TempData["ErrorCategoryMessage"] = "Dữ liệu không hợp lệ, vui lòng kiểm tra lại thông tin.";
             return RedirectToAction("List");
         }
 

@@ -57,13 +57,14 @@ namespace Asset_Management.Controllers
                 Console.WriteLine("Validation Errors: " + string.Join(", ", errors));
                 ViewBag.Assets = new SelectList(await _assetService.GetAllAssetsAsync(), "AssetCode", "AssetName");
                 ViewBag.Locations = new SelectList(await _locationService.GetAllLocationsAsync(), "LocationName", "LocationName");
-
+                TempData["ErrorAssetMovenemtMessage"] = $"Thêm Asset Movement không thành công kiểm tra lại thông tin";
                 return View(model);
             }
 
             try
             {
                 _assetMovementService.AddMovement(model);
+                TempData["SuccessAssetMovenemtMessage"] = "Thêm Asset Movement thành công!";
                 return RedirectToAction("List");
             }
             catch (Exception ex)

@@ -47,6 +47,13 @@
                 <div class="col-sm-12">
                     <div class="card table-card">
                         <div class="card-body">
+                            @if (TempData["SuccessAddMaintenanceMessage"] != null)
+                            {
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    @TempData["SuccessAddMaintenanceMessage"]
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            }
                             <div class="text-center p-4 pb-0">
                                 <h3>Asset Maintenance History</h3>
                             </div>

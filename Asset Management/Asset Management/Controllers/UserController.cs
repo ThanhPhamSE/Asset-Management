@@ -45,24 +45,33 @@ namespace Asset_Management.Controllers
                 {
                     Console.WriteLine(error); // In lỗi ra console
                 }
+                ViewData["MessageAddUserFail"] = "Thêm người dùng không thành công. Vui lòng kiểm tra lại thông tin.";
+                ViewBag.Roles = await _userService.GetRolesAsync();
+                var users = await _userService.GetAllUsersAsync();
+                return View("List", users);
+            }
+
+            var existingUser = await _userManager.FindByEmailAsync(model.Email);
+            if (existingUser != null)
+            {
+                ModelState.AddModelError("Email", "Email này đã được sử dụng. Vui lòng chọn email khác.");
+                ViewData["MessageAddUserFail"] = "Thêm người dùng thất bại. Email đã tồn tại.";
                 ViewBag.Roles = await _userService.GetRolesAsync();
                 var users = await _userService.GetAllUsersAsync();
                 return View("List", users);
             }
 
             var result = await _userService.AddUserAsync(model);
-            Console.WriteLine($"IsActiveString: {model.IsActiveString}");
-            Console.WriteLine($"IsActive: {model.IsActive}");
-            var savedUser = await _userManager.FindByEmailAsync(model.Email);
-            Console.WriteLine($"Saved User LockoutEnabled: {savedUser.LockoutEnabled}");
+            //var savedUser = await _userManager.FindByEmailAsync(model.Email);
             if (!result)
             {
                 ModelState.AddModelError("", "Failed to add user.");
+                ViewData["MessageAddUserFail"] = "Thêm người dùng thất bại hãy kiểm tra lại thông tin.";
                 ViewBag.Roles = await _userService.GetRolesAsync();
                 var users = await _userService.GetAllUsersAsync();
                 return View("List", users);
             }
-
+            TempData["MessageAddUserSuccess"] = "Thêm người dùng thành công!";
             return RedirectToAction("List");
         }
 
@@ -71,6 +80,7 @@ namespace Asset_Management.Controllers
         {
             if (string.IsNullOrEmpty(userId))
             {
+                TempData["MessageDeleteFail"] = "Xóa người dùng không thành công!";
                 ModelState.AddModelError("", "Invalid user ID.");
                 return RedirectToAction("List");
             }
@@ -78,9 +88,10 @@ namespace Asset_Management.Controllers
             bool result = await _userService.DeleteUserAsync(userId);
             if (!result)
             {
+                TempData["MessageDeleteFail"] = "Xóa người dùng không thành công!";
                 ModelState.AddModelError("", "Failed to delete user.");
             }
-
+            TempData["MessageDeleteUserSuccess"] = "Xóa người dùng thành công!";
             return RedirectToAction("List");
         }
 
@@ -120,6 +131,7 @@ namespace Asset_Management.Controllers
                 ModelState.AddModelError("", "Selected role does not exist.");
                 ViewBag.Roles = await _userService.GetRolesAsync();
                 var users = await _userService.GetAllUsersAsync();
+                TempData["MessageUpdateUserFail"] = "Chỉnh sửa người dùng thành công kiểm tra lại role";
                 return View("List", users);
             }
 
@@ -129,12 +141,13 @@ namespace Asset_Management.Controllers
             var result = await _userManager.UpdateAsync(existingUser);
             if (!result.Succeeded)
             {
+                TempData["MessageUpdateUserFail"] = "Chỉnh sửa người dùng thành công kiểm tra lại thông tin!";
                 ModelState.AddModelError("", "Failed to update user.");
                 ViewBag.Roles = await _userService.GetRolesAsync();
                 var users = await _userService.GetAllUsersAsync();
                 return View("List", users);
             }
-
+            TempData["MessageUpdateUserSuccess"] = "Chỉnh sửa người dùng thành công!";
             return RedirectToAction("List");
         }
 

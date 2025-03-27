@@ -49,11 +49,12 @@ namespace Asset_Management.Controllers
                                   .ToList();
                 Console.WriteLine("Validation Errors: " + string.Join(", ", errors));
                 await PopulateDropdowns();
+                TempData["ErrorCheckMessage"] = "Tạo Asset Check không thành công. Kiểm tra lại thông tin";
                 return View(model);
             }
 
             await _assetCheckService.AddAsync(model);
-
+            TempData["SuccessCheckMessage"] = "Tạo Asset Check thành công!";
             return RedirectToAction(nameof(List));
         }
 
@@ -82,6 +83,7 @@ namespace Asset_Management.Controllers
             }
 
             await _assetCheckService.EditAsync(model);
+            TempData["SuccessCheckMessage"] = "Cập nhật Asset Check thành công!";
             return RedirectToAction(nameof(List));
         }
 

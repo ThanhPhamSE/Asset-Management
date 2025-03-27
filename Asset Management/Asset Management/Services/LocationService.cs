@@ -40,6 +40,13 @@ namespace Asset_Management.Services
 
         public async Task AddLocationAsync(LocationViewModel model)
         {
+            // Kiểm tra Location đã tồn tại (case-insensitive)
+            bool exists = await _locationRepository.ExistsByNameAsync(model.LocationName);
+            if (exists)
+            {
+                throw new InvalidOperationException("Location đã tồn tại!");
+            }
+
             var location = new Location
             {
                 LocationName = model.LocationName,
@@ -47,16 +54,27 @@ namespace Asset_Management.Services
             };
             await _locationRepository.AddLocationAsync(location);
         }
-
         public async Task UpdateLocationAsync(LocationViewModel model)
         {
             var location = await _locationRepository.GetLocationByIdAsync(model.LocationId.Value);
-            if (location != null)
+            if (location == null)
             {
-                location.LocationName = model.LocationName;
-                location.Description = model.Description;
-                await _locationRepository.UpdateLocationAsync(location);
+                throw new InvalidOperationException("Location không tồn tại!");
             }
+
+            // Nếu tên Location được thay đổi, kiểm tra tên mới đã tồn tại chưa
+            if (!string.Equals(location.LocationName, model.LocationName, StringComparison.OrdinalIgnoreCase))
+            {
+                bool exists = await _locationRepository.ExistsByNameAsync(model.LocationName);
+                if (exists)
+                {
+                    throw new InvalidOperationException("Location đã tồn tại!");
+                }
+            }
+
+            location.LocationName = model.LocationName;
+            location.Description = model.Description;
+            await _locationRepository.UpdateLocationAsync(location);
         }
 
         public async Task DeleteLocationAsync(int id)

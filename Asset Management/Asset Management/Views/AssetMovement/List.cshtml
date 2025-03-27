@@ -52,12 +52,18 @@
                                 <h3>Asset Maintenance History</h3>
                             </div>
                             <div class="text-end p-4 pb-0">
-                                <a asp-controller="AssetMaintenance" asp-action="Create" class="btn btn-primary">
+                                <a asp-controller="AssetMovement" asp-action="Create" class="btn btn-primary">
                                     <i class="ti ti-plus f-18"></i> Add New Movement
                                 </a>
                             </div>
 
-
+                            @if (TempData["SuccessAssetMovenemtMessage"] != null)
+                            {
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    @TempData["SuccessAssetMovenemtMessage"]
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
+                            }
                             <div class="table-responsive">
                                 <table class="table table-hover" id="pc-dt-simple">
                                     <thead>

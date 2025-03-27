@@ -63,7 +63,48 @@
         </div>
       </div>
       <!-- [ breadcrumb ] end -->
-
+            @if (ViewData["MessageAddUserFail"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewData["MessageAddUserFail"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["MessageAddUserSuccess"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["MessageAddUserSuccess"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["MessageDeleteUserSuccess"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["MessageDeleteUserSuccess"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["MessageDeleteFail"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["MessageDeleteFail"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["MessageUpdateUserSuccess"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["MessageUpdateUserSuccess"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
+            @if (TempData["MessageUpdateUserFail"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["MessageUpdateUserFail"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
       <!-- [ Main Content ] start -->
       <div class="row">
         <!-- [ sample-page ] start -->
@@ -137,12 +178,12 @@
 
                             <td class="text-center">
                                 <ul class="list-inline me-auto mb-0">
-                                    <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
+                                    @* <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="View">
                                         <a href="#" class="avtar avtar-xs btn-link-secondary" data-bs-toggle="modal"
                                             data-bs-target="#user-modal">
                                             <i class="ti ti-eye f-18"></i>
                                         </a>
-                                    </li>
+                                    </li> *@
                                     <li class="list-inline-item align-bottom" data-bs-toggle="tooltip" title="Edit">
                                         <a href="#" class="avtar avtar-xs btn-link-primary edit-user-btn"
                                             data-bs-toggle="modal"
@@ -180,122 +221,6 @@
       <!-- [ Main Content ] end -->
     </div>
   </div>
-  @* <div class="modal fade" id="user-modal" data-bs-keyboard="false" tabindex="-1"
-    aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
-      <div class="modal-content">
-        <div class="modal-header border-0 pb-0">
-          <h5 class="mb-0">Customer Details</h5>
-          <a href="#" class="avtar avtar-s btn-link-danger" data-bs-dismiss="modal">
-            <i class="ti ti-x f-20"></i>
-          </a>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div class="col-lg-4">
-              <div class="card">
-                <div class="card-body position-relative">
-                  <div class="position-absolute end-0 top-0 p-3">
-                    <span class="badge bg-primary">Relationship</span>
-                  </div>
-                  <div class="text-center mt-3">
-                    <div class="chat-avtar d-inline-flex mx-auto">
-                      <img class="rounded-circle img-fluid wid-60" src="../assets/images/user/avatar-5.jpg"
-                        alt="User image">
-                    </div>
-                    <h5 class="mb-0">Aaron Poole</h5>
-                    <p class="text-muted text-sm">Manufacturing Director</p>
-                    <hr class="my-3">
-                    <div class="row g-3">
-                      <div class="col-4">
-                        <h5 class="mb-0">45</h5>
-                        <small class="text-muted">Age</small>
-                      </div>
-                      <div class="col-4 border border-top-0 border-bottom-0">
-                        <h5 class="mb-0">86%</h5>
-                        <small class="text-muted">Progress</small>
-                      </div>
-                      <div class="col-4">
-                        <h5 class="mb-0">7634</h5>
-                        <small class="text-muted">Visits</small>
-                      </div>
-                    </div>
-                    <hr class="my-3">
-                    <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                      <i class="ti ti-mail"></i>
-                      <p class="mb-0">bo@gmail.com</p>
-                    </div>
-                    <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                      <i class="ti ti-phone"></i>
-                      <p class="mb-0">+1 (247) 849-6968</p>
-                    </div>
-                    <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                      <i class="ti ti-map-pin"></i>
-                      <p class="mb-0">Lesotho</p>
-                    </div>
-                    <div class="d-inline-flex align-items-center justify-content-between w-100">
-                      <i class="ti ti-link"></i>
-                      <a href="#" class="link-primary">
-                        <p class="mb-0">https://anshan.dh.url</p>
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-8">
-              <div class="card">
-                <div class="card-header">
-                  <h5>Personal Details</h5>
-                </div>
-                <div class="card-body">
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item px-0 pt-0">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <p class="mb-1 text-muted">Full Name</p>
-                          <h6 class="mb-0">Aaron Poole</h6>
-                        </div>
-                        <div class="col-md-6">
-                          <p class="mb-1 text-muted">Father Name</p>
-                          <h6 class="mb-0">Mr. Ralph Sabatini</h6>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="list-group-item px-0">
-                      <div class="row">
-                        <div class="col-md-6">
-                          <p class="mb-1 text-muted">Country</p>
-                          <h6 class="mb-0">Lesotho</h6>
-                        </div>
-                        <div class="col-md-6">
-                          <p class="mb-1 text-muted">Zip Code</p>
-                          <h6 class="mb-0">247 849</h6>
-                        </div>
-                      </div>
-                    </li>
-                    <li class="list-group-item px-0 pb-0">
-                      <p class="mb-1 text-muted">Address</p>
-                      <h6 class="mb-0">647 Punam Center, Ulabifgu, Myanmar (Burma) - 41487</h6>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div class="card">
-                <div class="card-header">
-                  <h5>About me</h5>
-                </div>
-                <div class="card-body">
-                  <p class="mb-0">Hello, I’m Aaron Poole Manufacturing Director based in international company, Void
-                    jiidki me na fep juih ced gihhiwi launke cu mig tujum peodpo.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div> *@
   <div class="modal fade" id="user-edit_add-modal" data-bs-keyboard="false" tabindex="-1"
    aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">

@@ -33,10 +33,12 @@ namespace Asset_Management.Controllers
             if (!ModelState.IsValid)
             {
                 ViewBag.Assets = await _maintenanceService.GetAssetsNeedingMaintenanceAsync();
+                TempData["ErrorAddMaintenanceMessage"] = "Thêm bảo trì không thành công! Kiểm tra lại thông tin";
                 return View(model);
             }
 
             await _maintenanceService.AddMaintenanceAsync(model);
+            TempData["SuccessAddMaintenanceMessage"] = "Thêm bảo trì thành công!";
             return RedirectToAction("List");
         }
 
@@ -67,18 +69,21 @@ namespace Asset_Management.Controllers
                         Console.WriteLine($"Key: {error.Key}, Error: {subError.ErrorMessage}");
                     }
                 }
+                TempData["ErrorAddMaintenanceMessage"] = "Thay đổi bảo trì không thành công! Kiểm tra lại thông tin";
                 return View(model);
             }
 
             try
             {
                 await _maintenanceService.EditMaintenanceAsync(model);
+                TempData["SuccessAddMaintenanceMessage"] = "Thay đổi bảo trì thành công!";
                 return RedirectToAction("List");
             }
             catch (Exception ex)
             {
                 ModelState.AddModelError(string.Empty, ex.Message);
                 ViewBag.Assets = await _maintenanceService.GetAssetsNeedingMaintenanceAsync();
+                TempData["ErrorAddMaintenanceMessage"] = "Thay đổi bảo trì không thành công! Kiểm tra lại thông tin";
                 return View(model);
             }
         }

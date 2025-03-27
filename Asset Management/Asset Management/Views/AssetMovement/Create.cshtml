@@ -94,7 +94,13 @@
                     </div>
                 </div>
             </div>
-
+            @if (TempData["ErrorAssetMovenemtMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorAssetMovenemtMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <form asp-action="Create" method="get">
                 <div class="form-group">
                     <label for="AssetCode">Asset</label>
@@ -130,9 +136,15 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group">
+                                               @*  <div class="form-group">
                                                     <label for="MoveDate">Movement Date</label>
                                                     <input type="date" id="MovementDate" name="MoveDate" class="form-control" />
+                                                </div> *@
+                                                <div class="form-group">
+                                                    <label for="MoveDate">Movement Date</label>
+                                                    <input type="date" id="MovementDate" name="MoveDate" class="form-control"
+                                                           value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                                                           max="@DateTime.Now.ToString("yyyy-MM-dd")" />
                                                 </div>
                                                 <div class="form-group">
                                                     <label for="ResponsiblePerson">Responsible Person</label>

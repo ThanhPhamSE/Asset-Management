@@ -37,69 +37,70 @@ namespace Asset_Management.Services
 
         public async Task AddAssetAsync(AssetViewModel assetViewModel)
         {
+            // Chuyển đổi ViewModel sang Model
             var asset = MapToModel(assetViewModel);
 
-            if (assetViewModel.ImageFile != null)
+            // Kiểm tra xem AssetCode đã tồn tại chưa
+            if (await _assetRepository.ExistsAsync(asset.AssetCode))
             {
-                string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
-                Directory.CreateDirectory(uploadsFolder);
-
-                string uniqueFileName = $"{Guid.NewGuid()}_{assetViewModel.ImageFile.FileName}";
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    await assetViewModel.ImageFile.CopyToAsync(fileStream);
-                }
-
-                asset.ImageUrl = "/uploads/" + uniqueFileName;
+                throw new InvalidOperationException($"Tài sản với mã '{asset.AssetCode}' đã tồn tại. Hãy sử dụng mã khác.");
             }
 
+            // Xử lý upload ảnh nếu có file được chọn
+            if (assetViewModel.ImageFile != null && assetViewModel.ImageFile.Length > 0)
+            {
+                try
+                {
+                    // Tạo thư mục lưu ảnh nếu chưa có
+                    string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
+                    Directory.CreateDirectory(uploadsFolder);
+
+                    // Lấy tên file an toàn và tạo tên file duy nhất
+                    string fileName = Path.GetFileName(assetViewModel.ImageFile.FileName);
+                    string uniqueFileName = $"{Guid.NewGuid()}_{fileName}";
+                    string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                    // Lưu file lên server
+                    using (var fileStream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await assetViewModel.ImageFile.CopyToAsync(fileStream);
+                    }
+
+                    // Lưu đường dẫn ảnh vào model
+                    asset.ImageUrl = "/uploads/" + uniqueFileName;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Lỗi khi lưu ảnh: {ex.Message}");
+                    asset.ImageUrl = "/uploads/default.png"; // Sử dụng ảnh mặc định nếu có lỗi
+                }
+            }
+            else
+            {
+                // Nếu không upload ảnh, gán ảnh mặc định
+                asset.ImageUrl = "/uploads/default.png";
+            }
+
+            // Lưu đối tượng asset vào database qua repository
             await _assetRepository.AddAsync(asset);
         }
-
-        //public async Task UpdateAssetAsync(AssetViewModel assetViewModel)
-        //{
-
-
-        //    // Xử lý ảnh
-        //    if (assetViewModel.ImageFile != null)
-        //    {
-        //        string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
-        //        Directory.CreateDirectory(uploadsFolder);
-
-        //        string uniqueFileName = $"{Guid.NewGuid()}_{assetViewModel.ImageFile.FileName}";
-        //        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-        //        using (var fileStream = new FileStream(filePath, FileMode.Create))
-        //        {
-        //            await assetViewModel.ImageFile.CopyToAsync(fileStream);
-        //        }
-
-        //        // Xóa ảnh cũ nếu có
-        //        if (!string.IsNullOrEmpty(assetViewModel.ImagePath))
-        //        {
-        //            string oldFilePath = Path.Combine(_environment.WebRootPath, assetViewModel.ImagePath.TrimStart('/'));
-        //            if (System.IO.File.Exists(oldFilePath))
-        //            {
-        //                System.IO.File.Delete(oldFilePath);
-        //            }
-        //        }
-
-        //        assetViewModel.ImagePath = "/uploads/" + uniqueFileName;
-        //    }
-
-
-        //    var asset = MapToModel(assetViewModel);
-        //    await _assetRepository.UpdateAsync(asset);
-        //}
-
         public async Task UpdateAssetAsync(AssetViewModel assetViewModel)
         {
             var existingAsset = await _assetRepository.GetByIdAsync(assetViewModel.AssetId);
             if (existingAsset == null)
             {
                 throw new InvalidOperationException("Tài sản không tồn tại.");
+            }
+
+            // Kiểm tra trùng AssetCode: Nếu AssetCode mới khác với AssetCode hiện tại,
+            // kiểm tra xem AssetCode mới có tồn tại ở tài sản khác không.
+            if (!string.Equals(existingAsset.AssetCode, assetViewModel.AssetCode, StringComparison.OrdinalIgnoreCase))
+            {
+                bool duplicateExists = await _assetRepository.ExistsAsync(assetViewModel.AssetCode);
+                if (duplicateExists)
+                {
+                    throw new InvalidOperationException($"Asset với mã '{assetViewModel.AssetCode}' đã tồn tại.");
+                }
             }
 
             string? existingImagePath = existingAsset.ImageUrl;
@@ -109,7 +110,7 @@ namespace Asset_Management.Services
                 string uploadsFolder = Path.Combine(_environment.WebRootPath, "uploads");
                 Directory.CreateDirectory(uploadsFolder);
 
-                string uniqueFileName = $"{Guid.NewGuid()}_{assetViewModel.ImageFile.FileName}";
+                string uniqueFileName = $"{Guid.NewGuid()}_{Path.GetFileName(assetViewModel.ImageFile.FileName)}";
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
                 using (var fileStream = new FileStream(filePath, FileMode.Create))

@@ -37,7 +37,7 @@
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Home</a></li>
                                 <li class="breadcrumb-item"><a asp-action="List" asp-controller="Asset">Assets</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Add Asset Movement</li>
+                                <li class="breadcrumb-item" aria-current="page">Add Asset Check</li>
                             </ul>
                         </div>
                         <div class="col-md-12">
@@ -48,7 +48,13 @@
                     </div>
                 </div>
             </div>
-
+            @if (TempData["ErrorCheckMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @TempData["ErrorCheckMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <form id="selectAssetForm" method="post">
                 <div class="form-group">
                     <label>Asset</label>
@@ -84,10 +90,17 @@
                                                     </select>
                                                 </div>
 
-                                                <div class="form-group">
+                                                @* <div class="form-group">
                                                     <label>Check Date</label>
                                                     <input asp-for="CheckDate" type="date" class="form-control" />
+                                                </div> *@
+                                                <div class="form-group">
+                                                    <label>Check Date</label>
+                                                    <input asp-for="CheckDate" type="date" class="form-control"
+                                                           value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                                                           max="@DateTime.Now.ToString("yyyy-MM-dd")" />
                                                 </div>
+
 
                                                 <div class="form-group">
                                                     <label>Checked By</label>

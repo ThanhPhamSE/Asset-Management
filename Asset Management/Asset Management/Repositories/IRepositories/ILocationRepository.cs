@@ -9,5 +9,6 @@ namespace Asset_Management.Repositories.IRepositories
         Task AddLocationAsync(Location location);
         Task UpdateLocationAsync(Location location);
         Task DeleteLocationAsync(int id);
+        Task<bool> ExistsByNameAsync(string locationName);
     }
 }

@@ -71,14 +71,14 @@ namespace Asset_Management.Services
                 LockoutEnabled = !model.IsActive
             };
 
-            Console.WriteLine($"Before Saving - LockoutEnabled: {user.LockoutEnabled}");
+            //Console.WriteLine($"Before Saving - LockoutEnabled: {user.LockoutEnabled}");
 
             // Tạo tài khoản mới
             var result = await _userRepository.AddUserAsync(user, model.Password);
             if (!result) return false;
 
             // Kiểm tra lại sau khi lưu
-            Console.WriteLine($"Before Saving - LockoutEnabled: {user.LockoutEnabled}");
+            //Console.WriteLine($"Before Saving - LockoutEnabled: {user.LockoutEnabled}");
 
             return await _userRepository.AddToRoleAsync(user, model.RoleId);
         }

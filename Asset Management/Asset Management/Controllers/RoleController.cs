@@ -57,9 +57,6 @@ namespace Asset_Management.Controllers
             return RedirectToAction("List");
         }
 
-
-
-
         [HttpPost]
         public async Task<IActionResult> Edit(RoleViewModel model)
         {
@@ -67,7 +64,8 @@ namespace Asset_Management.Controllers
 
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                var errors = ModelState.Values.SelectMany(v => v.Errors)
+                                  .Select(e => e.ErrorMessage);
                 Console.WriteLine("Validation Errors: " + string.Join("; ", errors));
                 TempData["ErrorMessage"] = string.Join("; ", errors);
                 return RedirectToAction("List");
@@ -80,6 +78,14 @@ namespace Asset_Management.Controllers
                 return RedirectToAction("List");
             }
 
+            // Kiểm tra nếu tên role mới đã tồn tại ở role khác
+            var existingRole = await _roleService.GetRoleByNameAsync(model.Name);
+            if (existingRole != null && existingRole.Id != model.Id)
+            {
+                TempData["ErrorMessage"] = "Role already exists!";
+                return RedirectToAction("List");
+            }
+
             role.Name = model.Name;
             role.NormalizedName = model.Name.ToUpper();
 
@@ -88,7 +94,6 @@ namespace Asset_Management.Controllers
             TempData["SuccessMessage"] = "Role updated successfully!";
             return RedirectToAction("List");
         }
-
 
 
 

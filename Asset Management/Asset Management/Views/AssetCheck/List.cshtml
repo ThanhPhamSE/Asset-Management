@@ -42,6 +42,13 @@
     <div class="pc-container">
         <div class="pc-content">
             <!-- [ Main Content ] start -->
+            @if (TempData["SuccessCheckMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @TempData["SuccessCheckMessage"]
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            }
             <div class="row">
                 <!-- [ sample-page ] start -->
                 <div class="col-sm-12">
@@ -52,7 +59,7 @@
                             </div>
                             <div class="text-end p-4 pb-0">
                                 <a asp-controller="AssetCheck" asp-action="Create" class="btn btn-primary">
-                                    <i class="ti ti-plus f-18"></i> Edit Check Asset
+                                    <i class="ti ti-plus f-18"></i> Add Check Asset
                                 </a>
                             </div>
 

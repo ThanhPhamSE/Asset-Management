@@ -62,7 +62,21 @@ namespace Asset_Management.Controllers
                 return View(assetViewModel);
             }
 
-            await _assetService.AddAssetAsync(assetViewModel);
+            try
+            {
+                await _assetService.AddAssetAsync(assetViewModel);
+                TempData["SuccessMessage"] = "Thêm tài sản thành công!";
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Thêm lỗi vào ModelState cho trường AssetCode để hiển thị thông báo lỗi
+                ModelState.AddModelError("AssetCode", ex.Message);
+                ViewBag.Categories = await _assetService.GetCategoriesAsync();
+                ViewBag.Statuses = await _assetService.GetStatusesAsync();
+                ViewBag.Locations = await _assetService.GetLocationsAsync();
+                return View(assetViewModel);
+            }
+
             return RedirectToAction(nameof(List));
         }
 
@@ -72,7 +86,9 @@ namespace Asset_Management.Controllers
         {
             if (!ModelState.IsValid)
             {
-                var errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage);
+                var errors = ModelState.Values
+                                       .SelectMany(v => v.Errors)
+                                       .Select(e => e.ErrorMessage);
                 foreach (var error in errors)
                 {
                     Console.WriteLine(error); // Debug lỗi
@@ -84,7 +100,21 @@ namespace Asset_Management.Controllers
                 return View(assetViewModel);
             }
 
-            await _assetService.UpdateAssetAsync(assetViewModel);
+            try
+            {
+                await _assetService.UpdateAssetAsync(assetViewModel);
+                TempData["SuccessMessage"] = "Cập nhật tài sản thành công!";
+            }
+            catch (InvalidOperationException ex)
+            {
+                // Thêm lỗi vào ModelState cho trường AssetCode để hiển thị thông báo lỗi cho người dùng
+                ModelState.AddModelError("AssetCode", ex.Message);
+                ViewBag.Categories = await _assetService.GetCategoriesAsync();
+                ViewBag.Statuses = await _assetService.GetStatusesAsync();
+                ViewBag.Locations = await _assetService.GetLocationsAsync();
+                return View(assetViewModel);
+            }
+
             return RedirectToAction(nameof(List));
         }
 

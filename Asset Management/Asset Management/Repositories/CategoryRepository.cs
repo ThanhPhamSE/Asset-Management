@@ -45,5 +45,11 @@ namespace Asset_Management.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<bool> ExistsByNameAsync(string categoryName)
+        {
+            return await _context.Categories
+                .AnyAsync(c => c.CategoryName.ToLower() == categoryName.ToLower());
+        }
     }
 }

@@ -24,26 +24,50 @@ namespace Asset_Management.Controllers
         {
             if (ModelState.IsValid)
             {
-                await _locationService.AddLocationAsync(model);
-                return RedirectToAction(nameof(List));
+                try
+                {
+                    await _locationService.AddLocationAsync(model);
+                    TempData["SuccessLocationMessage"] = "Thêm Location thành công!";
+                }
+                catch (InvalidOperationException ex)
+                {
+                    TempData["ErrorLocationMessage"] = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorLocationMessage"] = $"Có lỗi xảy ra: {ex.Message}";
+                }
+                return RedirectToAction("List");
             }
 
-            IEnumerable<LocationViewModel> locations = await _locationService.GetAllLocationsAsync();
-            return View("List", locations);
+            TempData["ErrorLocationMessage"] = "Dữ liệu không hợp lệ, vui lòng kiểm tra lại thông tin.";
+            return RedirectToAction("List");
         }
-
         [HttpPost]
         public async Task<IActionResult> EditLocation(LocationViewModel model)
         {
             if (ModelState.IsValid)
             {
-                await _locationService.UpdateLocationAsync(model);
-                return RedirectToAction(nameof(List));
+                try
+                {
+                    await _locationService.UpdateLocationAsync(model);
+                    TempData["SuccessLocationMessage"] = "Cập nhật Location thành công!";
+                }
+                catch (InvalidOperationException ex)
+                {
+                    TempData["ErrorLocationMessage"] = ex.Message;
+                }
+                catch (Exception ex)
+                {
+                    TempData["ErrorLocationMessage"] = $"Có lỗi xảy ra: {ex.Message}";
+                }
+                return RedirectToAction("List");
             }
 
-            IEnumerable<LocationViewModel> locations = await _locationService.GetAllLocationsAsync();
-            return View("List", locations);
+            TempData["ErrorLocationMessage"] = "Dữ liệu không hợp lệ, vui lòng kiểm tra lại thông tin.";
+            return RedirectToAction("List");
         }
+
 
         [HttpPost]
         public async Task<IActionResult> DeleteLocation(int id)

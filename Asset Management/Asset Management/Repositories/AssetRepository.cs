@@ -99,5 +99,10 @@ namespace Asset_Management.Repositories
             return await _context.Assets
                 .FirstOrDefaultAsync(a => a.AssetCode == assetCode);
         }
+
+        public async Task<bool> ExistsAsync(string assetCode)
+        {
+            return await _context.Assets.AnyAsync(a => a.AssetCode == assetCode);
+        }
     }
 }

@@ -40,6 +40,13 @@ namespace Asset_Management.Services
 
         public async Task AddCategoryAsync(CategoryViewModel model)
         {
+            // Kiểm tra danh mục đã tồn tại (case-insensitive)
+            bool exists = await _categoryRepository.ExistsByNameAsync(model.CategoryName);
+            if (exists)
+            {
+                throw new InvalidOperationException("Danh mục đã tồn tại!");
+            }
+
             var category = new Category
             {
                 CategoryName = model.CategoryName,
@@ -51,12 +58,26 @@ namespace Asset_Management.Services
         public async Task UpdateCategoryAsync(CategoryViewModel model)
         {
             var category = await _categoryRepository.GetByIdAsync(model.CategoryId);
-            if (category == null) return;
+            if (category == null)
+            {
+                throw new InvalidOperationException("Danh mục không tồn tại!");
+            }
+
+            // Nếu tên danh mục được thay đổi, kiểm tra xem tên mới đã tồn tại hay chưa (case-insensitive)
+            if (!string.Equals(category.CategoryName, model.CategoryName, StringComparison.OrdinalIgnoreCase))
+            {
+                bool exists = await _categoryRepository.ExistsByNameAsync(model.CategoryName);
+                if (exists)
+                {
+                    throw new InvalidOperationException("Danh mục đã tồn tại!");
+                }
+            }
 
             category.CategoryName = model.CategoryName;
             category.Description = model.Description;
             await _categoryRepository.UpdateAsync(category);
         }
+
 
         public async Task DeleteCategoryAsync(int id)
         {

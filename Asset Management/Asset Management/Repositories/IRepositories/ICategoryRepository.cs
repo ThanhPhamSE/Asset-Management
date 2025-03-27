@@ -9,5 +9,6 @@ namespace Asset_Management.Repositories.IRepositories
         Task AddAsync(Category category);
         Task UpdateAsync(Category category);
         Task DeleteAsync(int id);
+        Task<bool> ExistsByNameAsync(string categoryName);
     }
 }

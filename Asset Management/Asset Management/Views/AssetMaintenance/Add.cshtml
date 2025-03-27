@@ -37,9 +37,16 @@
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Home</a></li>
                                 <li class="breadcrumb-item"><a asp-action="List" asp-controller="Asset">Assets</a></li>
-                                <li class="breadcrumb-item" aria-current="page">Edit Asset</li>
+                                <li class="breadcrumb-item" aria-current="page">Add Asset</li>
                             </ul>
                         </div>
+                        @if (TempData["ErrorAddMaintenanceMessage"] != null)
+                        {
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                                @TempData["ErrorAddMaintenanceMessage"]
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        }
                         <div class="col-md-12">
                             <div class="page-header-title">
                                 <h2 class="mb-0">Add Asset</h2>
@@ -74,9 +81,17 @@
                                                         </select>
                                                     </div>
                                                 </div>
-                                                <div class="form-group">
+                                                @* <div class="form-group">
                                                     <label class="form-label">Maintenance Date</label>
                                                     <input type="date" asp-for="MaintenanceDate" class="form-control" placeholder="Enter Maintenance Date">
+                                                    <span asp-validation-for="MaintenanceDate" class="text-danger"></span>
+                                                </div> *@
+                                                <div class="form-group">
+                                                    <label class="form-label">Maintenance Date</label>
+                                                    <input type="date" asp-for="MaintenanceDate" class="form-control"
+                                                           value="@DateTime.Now.ToString("yyyy-MM-dd")"
+                                                           max="@DateTime.Now.ToString("yyyy-MM-dd")"
+                                                           placeholder="Enter Maintenance Date" />
                                                     <span asp-validation-for="MaintenanceDate" class="text-danger"></span>
                                                 </div>
                                                 <div class="form-group">

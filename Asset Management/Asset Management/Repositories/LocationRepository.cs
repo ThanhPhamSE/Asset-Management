@@ -45,5 +45,11 @@ namespace Asset_Management.Repositories
                 await _context.SaveChangesAsync();
             }
         }
+
+        public async Task<bool> ExistsByNameAsync(string locationName)
+        {
+            return await _context.Locations
+                .AnyAsync(l => l.LocationName.ToLower() == locationName.ToLower());
+        }
     }
 }

@@ -17,5 +17,6 @@ namespace Asset_Management.Repositories.IRepositories
         Task<IEnumerable<Location>> GetLocationsAsync();
 
         Task<Asset> GetAssetByCodeAsync(string assetCode);
+        Task<bool> ExistsAsync(string assetCode);
     }
 }
