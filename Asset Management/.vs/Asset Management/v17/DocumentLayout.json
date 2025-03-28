@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\messages\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\messages\\chat.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\account\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\account\\verifyemail.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\hubs\\chathub.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\services\\emailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\services\\messageservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\controllers\\messagescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,51 +38,68 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Account\\Login.cshtml",
-              "RelativeDocumentMoniker": "Asset Management\\Views\\Account\\Login.cshtml",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Account\\Login.cshtml",
-              "RelativeToolTip": "Asset Management\\Views\\Account\\Login.cshtml",
-              "ViewState": "AQIAADEAAAAAAAAAAAAYwD8AAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-27T20:23:27.408Z"
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Asset Management\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Asset Management\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAHAAAAAAAAAAAAAAAHoAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T14:21:01.833Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "VerifyEmail.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Account\\VerifyEmail.cshtml",
-              "RelativeDocumentMoniker": "Asset Management\\Views\\Account\\VerifyEmail.cshtml",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Account\\VerifyEmail.cshtml",
-              "RelativeToolTip": "Asset Management\\Views\\Account\\VerifyEmail.cshtml",
-              "ViewState": "AQIAACoAAAAAAAAAAAAAAD0AAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-27T20:08:23.967Z"
+              "DocumentIndex": 4,
+              "Title": "MessagesController.cs",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Controllers\\MessagesController.cs",
+              "RelativeDocumentMoniker": "Asset Management\\Controllers\\MessagesController.cs",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Controllers\\MessagesController.cs",
+              "RelativeToolTip": "Asset Management\\Controllers\\MessagesController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABcAAAAnAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-28T14:01:40.886Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "EmailService.cs",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Services\\EmailService.cs",
-              "RelativeDocumentMoniker": "Asset Management\\Services\\EmailService.cs",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Services\\EmailService.cs",
-              "RelativeToolTip": "Asset Management\\Services\\EmailService.cs",
-              "ViewState": "AQIAAAEAAAAAAAAAAAAuwCoAAAAJAAAA",
+              "Title": "MessageService.cs",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Services\\MessageService.cs",
+              "RelativeDocumentMoniker": "Asset Management\\Services\\MessageService.cs",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Services\\MessageService.cs",
+              "RelativeToolTip": "Asset Management\\Services\\MessageService.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAADkAAAAkAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T19:52:48.612Z"
+              "WhenOpened": "2025-03-28T14:01:18.758Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AccountController.cs",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Controllers\\AccountController.cs",
-              "RelativeDocumentMoniker": "Asset Management\\Controllers\\AccountController.cs",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Controllers\\AccountController.cs",
-              "RelativeToolTip": "Asset Management\\Controllers\\AccountController.cs",
-              "ViewState": "AQIAAMcAAAAAAAAAAAAYwMwAAAA2AAAA",
+              "DocumentIndex": 2,
+              "Title": "ChatHub.cs",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Hubs\\ChatHub.cs",
+              "RelativeDocumentMoniker": "Asset Management\\Hubs\\ChatHub.cs",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Hubs\\ChatHub.cs",
+              "RelativeToolTip": "Asset Management\\Hubs\\ChatHub.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAuwC0AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-27T19:51:44.61Z"
+              "WhenOpened": "2025-03-28T13:51:09.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Chat.cshtml",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Messages\\Chat.cshtml",
+              "RelativeDocumentMoniker": "Asset Management\\Views\\Messages\\Chat.cshtml",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Messages\\Chat.cshtml",
+              "RelativeToolTip": "Asset Management\\Views\\Messages\\Chat.cshtml",
+              "ViewState": "AQIAALUAAAAAAAAAAAAAAG0AAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-28T13:23:36.678Z",
+              "EditorCaption": ""
             }
           ]
         }

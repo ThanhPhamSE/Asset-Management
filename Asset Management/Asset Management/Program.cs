@@ -7,6 +7,8 @@ using Asset_Management.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Graph.Models.ExternalConnectors;
+using Asset_Management.Helpers;
+using Asset_Management.Hubs;
 
 namespace Asset_Management
 {
@@ -18,6 +20,8 @@ namespace Asset_Management
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            builder.Services.AddSignalR();
 
             builder.Services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnectionString"))
@@ -56,6 +60,9 @@ namespace Asset_Management
             builder.Services.AddScoped<IStatusRepository, StatusRepository>();
             builder.Services.AddScoped<IStatusService, StatusService>();
 
+            builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
+
             var configuration = builder.Configuration;
             // Add Email Configs
             var emailConfig = configuration.GetSection("EmailConfiguration")
@@ -88,6 +95,8 @@ namespace Asset_Management
             app.MapControllerRoute(
                name: "default",
                pattern: "{controller=Account}/{action=Login}/{id?}");
+
+            app.MapHub<ChatHub>("/chatHub");
 
             app.Run();
         }

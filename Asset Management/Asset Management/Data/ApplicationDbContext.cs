@@ -20,6 +20,7 @@ namespace Asset_Management.Data
         public DbSet<Report> Reports { get; set; }
         public DbSet<Status> Statuses { get; set; }
         public DbSet<Roles> Roles { get; set; }
+        public DbSet<ChatMessage> Messages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
