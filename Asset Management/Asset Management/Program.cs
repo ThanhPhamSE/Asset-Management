@@ -6,6 +6,7 @@ using Asset_Management.Services.IServices;
 using Asset_Management.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Graph.Models.ExternalConnectors;
 
 namespace Asset_Management
 {
@@ -54,6 +55,14 @@ namespace Asset_Management
             builder.Services.AddScoped<IAssetCheckRepository, AssetCheckRepository>();
             builder.Services.AddScoped<IStatusRepository, StatusRepository>();
             builder.Services.AddScoped<IStatusService, StatusService>();
+
+            var configuration = builder.Configuration;
+            // Add Email Configs
+            var emailConfig = configuration.GetSection("EmailConfiguration")
+                                           .Get<EmailConfiguration>();
+            builder.Services.AddSingleton(emailConfig);
+
+            builder.Services.AddScoped<IEmailService, EmailService>();
 
             var app = builder.Build();
 

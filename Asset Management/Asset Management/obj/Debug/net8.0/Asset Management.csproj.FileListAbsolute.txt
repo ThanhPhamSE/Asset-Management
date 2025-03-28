@@ -322,3 +322,7 @@ D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\obj\Debug\n
 D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\obj\Debug\net8.0\Asset Management.genruntimeconfig.cache
 D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\obj\Debug\net8.0\ref\Asset Management.dll
 D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\bin\Debug\net8.0\MailKit.dll
+D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\bin\Debug\net8.0\MimeKit.dll
+D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\bin\Debug\net8.0\NETCore.MailKit.dll
+D:\PRN222\Project\Asset-Management\Asset Management\Asset Management\bin\Debug\net8.0\BouncyCastle.Crypto.dll

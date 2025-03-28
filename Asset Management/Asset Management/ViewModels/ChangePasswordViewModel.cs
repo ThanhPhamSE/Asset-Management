@@ -4,6 +4,7 @@ namespace Asset_Management.ViewModels
 {
     public class ChangePasswordViewModel
     {
+        public string Token { get; set; }
         [Required(ErrorMessage = "Email is required.")]
         [EmailAddress]
         public string Email { get; set; }
