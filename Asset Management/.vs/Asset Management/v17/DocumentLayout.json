@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\controllers\\assetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\controllers\\assetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\asset\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\asset\\list.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|d:\\prn222\\project\\asset-management\\asset management\\asset management\\views\\shared\\_navbarpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{BBD6980B-DF4F-4E05-881C-14A9DB750408}|Asset Management\\Asset Management.csproj|solutionrelative:asset management\\views\\shared\\_navbarpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,27 +26,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "List.cshtml",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Asset\\List.cshtml",
-              "RelativeDocumentMoniker": "Asset Management\\Views\\Asset\\List.cshtml",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Asset\\List.cshtml",
-              "RelativeToolTip": "Asset Management\\Views\\Asset\\List.cshtml",
-              "ViewState": "AQIAALcAAAAAAAAAAAAAAKUAAAATAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-03-31T14:51:21.752Z"
+              "DocumentIndex": 0,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Asset Management\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Asset Management\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AQIAAHEAAAAAAAAAAAAYwHoAAABCAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-31T16:14:54.498Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "AssetController.cs",
-              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Controllers\\AssetController.cs",
-              "RelativeDocumentMoniker": "Asset Management\\Controllers\\AssetController.cs",
-              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Controllers\\AssetController.cs",
-              "RelativeToolTip": "Asset Management\\Controllers\\AssetController.cs",
-              "ViewState": "AQIAAOkAAAAAAAAAAADwv/EAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-03-31T13:48:21.349Z",
+              "DocumentIndex": 1,
+              "Title": "_NavbarPartial.cshtml",
+              "DocumentMoniker": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Shared\\_NavbarPartial.cshtml",
+              "RelativeDocumentMoniker": "Asset Management\\Views\\Shared\\_NavbarPartial.cshtml",
+              "ToolTip": "D:\\PRN222\\Project\\Asset-Management\\Asset Management\\Asset Management\\Views\\Shared\\_NavbarPartial.cshtml",
+              "RelativeToolTip": "Asset Management\\Views\\Shared\\_NavbarPartial.cshtml",
+              "ViewState": "AQIAAEkAAAAAAAAAAAAYwFcAAAAQAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-03-31T16:08:36.583Z",
               "EditorCaption": ""
             }
           ]

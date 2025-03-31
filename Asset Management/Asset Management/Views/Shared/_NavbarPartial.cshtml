@@ -5,6 +5,8 @@
 @{
     var user = await userManager.GetUserAsync(User);
     var userName = user?.UserName ?? "Guest";
+    var isAdmin = user != null && await userManager.IsInRoleAsync(user, "Admin");
+    var isManager = user != null && await userManager.IsInRoleAsync(user, "Employee");
 }
 <!-- [ Sidebar Menu ] start -->
 <nav class="pc-sidebar">
@@ -17,12 +19,12 @@
         </div>
         <div class="navbar-content">
             <ul class="pc-navbar">
-                <li class="pc-item">
+                @* <li class="pc-item">
                     <a href="../dashboard/index.html" class="pc-link">
                         <span class="pc-micon"><i class="ti ti-dashboard"></i></span>
                         <span class="pc-mtext">Dashboard</span>
                     </a>
-                </li>
+                </li> *@
 
                 <li class="pc-item pc-caption">
                     <label>Asset Management</label>
@@ -64,8 +66,9 @@
                         <span class="pc-mtext">Location</span>
                     </a>
                 </li>
-
-                <li class="pc-item pc-caption">
+                @if (isAdmin)
+                {
+                    <li class="pc-item pc-caption">
                     <label>Account Management</label>
                     <i class="ti ti-news"></i>
                 </li>
@@ -79,6 +82,14 @@
                     <a asp-controller="Role" asp-action="List" class="pc-link">
                         <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
                         <span class="pc-mtext">Role</span>
+                    </a>
+                </li>
+                }
+                
+                <li class="pc-item">
+                    <a asp-controller="Messages" asp-action="Index" class="pc-link">
+                        <span class="pc-micon"><i class="ti ti-user-plus"></i></span>
+                        <span class="pc-mtext">Chat</span>
                     </a>
                 </li>
         </div>

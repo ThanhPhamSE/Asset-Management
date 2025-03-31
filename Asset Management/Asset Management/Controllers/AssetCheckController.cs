@@ -3,6 +3,7 @@ using Asset_Management.Services.IServices;
 using Asset_Management.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using OfficeOpenXml;
 
 namespace Asset_Management.Controllers
 {
@@ -119,5 +120,55 @@ namespace Asset_Management.Controllers
 
         }
 
+
+        public async Task<IActionResult> ExportToExcel()
+        {
+            var assetChecks = await _assetCheckService.GetAllAsync();
+            ExcelPackage.License.SetNonCommercialPersonal("phamhoangthanh1582003@gmail.com");
+            using (var package = new ExcelPackage())
+            {
+                var worksheet = package.Workbook.Worksheets.Add("Asset Checks");
+
+                // Tiêu đề cột
+                worksheet.Cells[1, 1].Value = "Asset";
+                worksheet.Cells[1, 2].Value = "Location";
+                worksheet.Cells[1, 3].Value = "Check Date";
+                worksheet.Cells[1, 4].Value = "Checked By";
+                worksheet.Cells[1, 5].Value = "Notes";
+                worksheet.Cells[1, 6].Value = "Status";
+
+                // Định dạng tiêu đề
+                using (var range = worksheet.Cells[1, 1, 1, 6])
+                {
+                    range.Style.Font.Bold = true;
+                    range.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                    range.Style.Fill.BackgroundColor.SetColor(System.Drawing.Color.LightGray);
+                    range.AutoFitColumns();
+                }
+
+                // Thêm dữ liệu
+                int row = 2;
+                foreach (var item in assetChecks)
+                {
+                    worksheet.Cells[row, 1].Value = item.AssetName;
+                    worksheet.Cells[row, 2].Value = item.LocationName;
+                    worksheet.Cells[row, 3].Value = item.CheckDate.ToString("yyyy-MM-dd");
+                    worksheet.Cells[row, 4].Value = item.CheckedBy;
+                    worksheet.Cells[row, 5].Value = item.Notes;
+                    worksheet.Cells[row, 6].Value = item.StatusName;
+                    row++;
+                }
+
+                // Tự động căn chỉnh cột
+                worksheet.Cells.AutoFitColumns();
+
+                // Xuất file Excel
+                var stream = new MemoryStream();
+                package.SaveAs(stream);
+                stream.Position = 0;
+
+                return File(stream, "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet", "AssetChecks.xlsx");
+            }
+        }
     }
 }

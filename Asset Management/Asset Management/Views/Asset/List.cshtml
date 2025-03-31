@@ -127,7 +127,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
+                            <th></th>
                             <th>Asset</th>
+                            <th>Asset Code</th>
                             <th>Categories</th>
                             <th>Purchase Date</th>
                             <th>Purchase Price</th>
@@ -142,11 +144,13 @@
                         {
                             <tr>
                                 <td>@asset.AssetId</td>
+                                <td><img src="@asset.ImagePath" alt="img-asset" width="50" height="50"></td>
+                                <th>@asset.AssetCode</th>
                                 <td>@asset.AssetName</td>
                                 <td>@asset.CategoryName</td>
                                 <td>@asset.PurchaseDate.ToShortDateString()</td>
-                                <td>@(asset.PurchasePrice.ToString("C"))</td>
-                                <td>@(asset.CurrentValue.HasValue ? asset.CurrentValue.Value.ToString("C") : "N/A")</td>
+                                <td>@(asset.PurchasePrice)</td>
+                                <td>@(asset.CurrentValue.HasValue ? asset.CurrentValue.Value : "N/A")</td>
                                 <td>@asset.LocationName</td>
                                 <td><span class="badge bg-light-success f-12">@asset.StatusName</span></td>
                                 <td class="text-center">
