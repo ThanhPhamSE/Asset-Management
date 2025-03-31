@@ -52,6 +52,36 @@ namespace Asset_Management.Repositories
                 .ToListAsync();
         }
 
+        public async Task<(IEnumerable<Asset>, int)> FilterByAsync(int? categoryId, int? statusId, int? locationId, string? searchTerm, int page, int pageSize)
+        {
+            var query = _context.Assets.AsQueryable();
+
+            if (categoryId.HasValue)
+                query = query.Where(a => a.CategoryId == categoryId);
+
+            if (statusId.HasValue)
+                query = query.Where(a => a.StatusId == statusId);
+
+            if (locationId.HasValue)
+                query = query.Where(a => a.LocationId == locationId);
+
+            if (!string.IsNullOrWhiteSpace(searchTerm))
+                query = query.Where(a => a.AssetName.Contains(searchTerm));
+
+            int totalItems = await query.CountAsync();
+
+            var assets = await query
+                .Include(a => a.Category)
+                .Include(a => a.Status)
+                .Include(a => a.Location)
+                .Skip((page - 1) * pageSize)
+                .Take(pageSize)
+                .ToListAsync();
+
+            return (assets, totalItems);
+        }
+
+
         public async Task AddAsync(Asset asset)
         {
             await _context.Assets.AddAsync(asset);

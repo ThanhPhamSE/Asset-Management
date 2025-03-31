@@ -7,6 +7,9 @@ namespace Asset_Management.Repositories.IRepositories
         Task<IEnumerable<Asset>> GetAllAsync();
         Task<Asset> GetByIdAsync(int id);
         Task<IEnumerable<Asset>> FilterByAsync(int? categoryId, int? statusId, int? locationId);
+
+        Task<(IEnumerable<Asset>, int)> FilterByAsync(int? categoryId, int? statusId, int? locationId, string? searchTerm, int page, int pageSize);
+
         Task AddAsync(Asset asset);
         Task UpdateAsync(Asset asset);
         Task DeleteAsync(int id);

@@ -35,6 +35,13 @@ namespace Asset_Management.Services
             return assets.Select(MapToViewModel);
         }
 
+        public async Task<(IEnumerable<AssetViewModel>, int)> FilterAssetsAsync(int? categoryId, int? statusId, int? locationId, string? searchTerm, int page, int pageSize)
+        {
+            var (assets, totalItems) = await _assetRepository.FilterByAsync(categoryId, statusId, locationId, searchTerm, page, pageSize);
+            return (assets.Select(MapToViewModel), totalItems);
+        }
+
+
         public async Task AddAssetAsync(AssetViewModel assetViewModel)
         {
             // Chuyển đổi ViewModel sang Model

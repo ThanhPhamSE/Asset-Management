@@ -9,6 +9,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Graph.Models.ExternalConnectors;
 using Asset_Management.Helpers;
 using Asset_Management.Hubs;
+using OfficeOpenXml;
+using static Org.BouncyCastle.Math.EC.ECCurve;
 
 namespace Asset_Management
 {
@@ -62,8 +64,10 @@ namespace Asset_Management
 
             builder.Services.AddScoped<ICurrentUserService, CurrentUserService>();
             builder.Services.AddScoped<IMessageService, MessageService>();
-
             var configuration = builder.Configuration;
+
+
+            ExcelPackage.License.SetNonCommercialPersonal("phamhoangthanh1582003@gmail.com");
             // Add Email Configs
             var emailConfig = configuration.GetSection("EmailConfiguration")
                                            .Get<EmailConfiguration>();
